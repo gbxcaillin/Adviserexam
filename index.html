@@ -77,36 +77,36 @@
   .sec-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; padding-left: 2px; }
 
   /* ── HOME TAB ── */
-  #panel-home { background: var(--navy); display: none; flex-direction: column; align-items: center; gap: 6px; padding: 8px 16px 12px; min-height: 100%; }
+  #panel-home { background: var(--navy); display: none; flex-direction: column; align-items: center; gap: 5px; padding: 6px 16px 10px; min-height: 100%; }
   #panel-home.active { display: flex; }
 
-  .home-logo-ring { width: 40px; height: 40px; border-radius: 12px; background: var(--gold-subtle); border: 1.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(201,168,76,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
-  .home-title { font-family: 'Playfair Display', serif; font-size: 26px; color: white; text-align: center; line-height: 1.15; margin-bottom: 0; letter-spacing: -0.02em; }
+  .home-logo-ring { width: 34px; height: 34px; border-radius: 10px; background: var(--gold-subtle); border: 1.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(201,168,76,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
+  .home-title { font-family: 'Playfair Display', serif; font-size: 22px; color: white; text-align: center; line-height: 1.1; margin-bottom: 0; letter-spacing: -0.02em; }
   .home-sub { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; margin-bottom: 0; max-width: 280px; font-weight: 400; }
 
   /* Stats */
   .home-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; width: 100%; margin-bottom: 0; }
   .home-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 7px 6px; text-align: center; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
   .home-stat:active { transform: scale(0.97); }
-  .home-stat .icon { font-size: 16px; display: block; margin-bottom: 4px; }
-  .home-stat .num { font-family: 'Playfair Display', serif; font-size: 18px; color: white; display: block; line-height: 1; }
+  .home-stat .icon { font-size: 13px; display: block; margin-bottom: 2px; }
+  .home-stat .num { font-family: 'Playfair Display', serif; font-size: 16px; color: white; display: block; line-height: 1; }
   .home-stat .num.gold { color: var(--gold); }
   .home-stat .num.fire { color: #ff9f43; }
-  .stat-lbl { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 5px; font-weight: 500; }
+  .stat-lbl { font-size: 9px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; font-weight: 500; }
 
   /* Nav cards */
   .home-nav-cards { display: flex; flex-direction: column; gap: 5px; width: 100%; margin-bottom: 0; }
   .home-nav-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); padding: 8px 11px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
   .home-nav-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(201,168,76,0.3); }
   .home-nav-card:active { transform: scale(0.98); background: rgba(255,255,255,0.13); }
-  .home-nav-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .home-nav-icon { width: 26px; height: 26px; border-radius: 7px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .home-nav-icon svg { stroke: rgba(255,255,255,0.85); }
   .home-nav-info { flex: 1; }
-  .home-nav-title { font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; letter-spacing: -0.01em; }
+  .home-nav-title { font-size: 13px; font-weight: 600; color: white; margin-bottom: 1px; letter-spacing: -0.01em; }
   .home-nav-desc { font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.3; }
   .home-nav-arrow { color: rgba(255,255,255,0.2); font-size: 20px; flex-shrink: 0; transition: transform var(--transition); }
   .home-nav-card:hover .home-nav-arrow { transform: translateX(2px); color: rgba(255,255,255,0.4); }
-  .home-disclaimer { font-size: 10px; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.5; width: 100%; }
+  .home-disclaimer { font-size: 9px; color: rgba(255,255,255,0.35); text-align: center; line-height: 1.4; width: 100%; }
 
   /* ── PRACTICE QUESTIONS ── */
   .pq-top { background: var(--navy); padding: 8px 16px 12px; flex-shrink: 0; border-bottom: 1.5px solid rgba(201,168,76,0.3); box-shadow: 0 6px 20px rgba(20,32,58,0.4), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(201,168,76,0.15); }
@@ -1552,7 +1552,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v163';
+    const APP_VERSION = 'v164';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
