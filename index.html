@@ -77,33 +77,33 @@
   .sec-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; padding-left: 2px; }
 
   /* ── HOME TAB ── */
-  #panel-home { background: var(--navy); display: none; flex-direction: column; align-items: center; gap: 10px; padding: 10px 18px 18px; min-height: 100%; }
+  #panel-home { background: var(--navy); display: none; flex-direction: column; align-items: center; gap: 6px; padding: 8px 16px 12px; min-height: 100%; }
   #panel-home.active { display: flex; }
 
-  .home-logo-ring { width: 48px; height: 48px; border-radius: 14px; background: var(--gold-subtle); border: 1.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(201,168,76,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
-  .home-title { font-family: 'Playfair Display', serif; font-size: 36px; color: white; text-align: center; line-height: 1.2; margin-bottom: 0; letter-spacing: -0.02em; }
+  .home-logo-ring { width: 40px; height: 40px; border-radius: 12px; background: var(--gold-subtle); border: 1.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(201,168,76,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
+  .home-title { font-family: 'Playfair Display', serif; font-size: 26px; color: white; text-align: center; line-height: 1.15; margin-bottom: 0; letter-spacing: -0.02em; }
   .home-sub { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; margin-bottom: 0; max-width: 280px; font-weight: 400; }
 
   /* Stats */
-  .home-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; width: 100%; margin-bottom: 0; }
-  .home-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 9px 9px; text-align: center; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .home-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; width: 100%; margin-bottom: 0; }
+  .home-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 7px 6px; text-align: center; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
   .home-stat:active { transform: scale(0.97); }
   .home-stat .icon { font-size: 16px; display: block; margin-bottom: 4px; }
-  .home-stat .num { font-family: 'Playfair Display', serif; font-size: 20px; color: white; display: block; line-height: 1; }
+  .home-stat .num { font-family: 'Playfair Display', serif; font-size: 18px; color: white; display: block; line-height: 1; }
   .home-stat .num.gold { color: var(--gold); }
   .home-stat .num.fire { color: #ff9f43; }
   .stat-lbl { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 5px; font-weight: 500; }
 
   /* Nav cards */
-  .home-nav-cards { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-bottom: 0; }
-  .home-nav-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); padding: 11px 13px; display: flex; align-items: center; gap: 11px; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .home-nav-cards { display: flex; flex-direction: column; gap: 5px; width: 100%; margin-bottom: 0; }
+  .home-nav-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); padding: 8px 11px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
   .home-nav-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(201,168,76,0.3); }
   .home-nav-card:active { transform: scale(0.98); background: rgba(255,255,255,0.13); }
   .home-nav-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .home-nav-icon svg { stroke: rgba(255,255,255,0.85); }
   .home-nav-info { flex: 1; }
   .home-nav-title { font-size: 14px; font-weight: 600; color: white; margin-bottom: 2px; letter-spacing: -0.01em; }
-  .home-nav-desc { font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+  .home-nav-desc { font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.3; }
   .home-nav-arrow { color: rgba(255,255,255,0.2); font-size: 20px; flex-shrink: 0; transition: transform var(--transition); }
   .home-nav-card:hover .home-nav-arrow { transform: translateX(2px); color: rgba(255,255,255,0.4); }
   .home-disclaimer { font-size: 10px; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.5; width: 100%; }
@@ -663,7 +663,7 @@
       <div style="width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
         <div style="width:36px;"></div>
         <div class="home-title" style="margin-bottom:0;text-align:center;flex:1;">Financial Adviser<br>Exam Questions</div>
-        <button class="settings-cog" onclick="openSettings()" aria-label="Settings" style="margin-top:18px;">
+        <button class="settings-cog" onclick="openSettings()" aria-label="Settings" style="margin-top:4px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"/>
             <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
@@ -750,7 +750,7 @@
       </div>
 
       <div class="past-exams-section" id="past-exams-container" style="display:none !important;"></div>
-      <div id="home-q-count" style="font-size:14px;color:var(--gold);text-align:center;letter-spacing:0.04em;font-weight:600;"></div>
+      <div id="home-q-count" style="font-size:11px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:0.04em;font-weight:500;"></div>
       <div class="home-disclaimer">Independent study tool — not affiliated with ASIC, ACER or any official examining body</div>
     </div>
 <!-- ══════════════════════════════════ -->
@@ -1552,7 +1552,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v162';
+    const APP_VERSION = 'v163';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
