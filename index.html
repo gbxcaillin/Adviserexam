@@ -40,10 +40,22 @@
     .phone-wrap { padding: 0; background: var(--off-white); }
     .phone-frame { width: 100%; height: 100vh; height: 100dvh; height: -webkit-fill-available; border-radius: 0; box-shadow: none; }
   }
-  /* Fullscreen mode — strips phone frame entirely (used when embedded via iframe) */
-  body.fullscreen-mode .phone-wrap { padding: 0; background: var(--off-white); }
-  body.fullscreen-mode .phone-frame { width: 100%; height: 100vh; height: 100dvh; height: -webkit-fill-available; border-radius: 0; box-shadow: none; }
-  body.fullscreen-mode .notch-time, body.fullscreen-mode .notch-icons { display: none; }
+  /* Fullscreen mode — strips phone frame, caps at 700px centred */
+  body.fullscreen-mode .phone-wrap {
+    padding: 0;
+    background: var(--off-white);
+    justify-content: center;
+  }
+  body.fullscreen-mode .phone-frame {
+    width: 100%;
+    max-width: 700px;
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    border-radius: 0;
+    box-shadow: 0 0 60px rgba(0,0,0,0.15);
+  }
+  body.fullscreen-mode .notch { display: none; }
 
   /* ── NOTCH ── */
   .notch { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 0 24px 6px; padding-top: max(38px, env(safe-area-inset-top, 38px)); flex-shrink: 0; box-shadow: 0 4px 16px rgba(20,32,58,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
@@ -1555,7 +1567,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v157';
+    const APP_VERSION = 'v158';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
