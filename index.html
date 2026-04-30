@@ -750,6 +750,7 @@
       </div>
 
       <div class="past-exams-section" id="past-exams-container" style="display:none !important;"></div>
+      <div id="home-q-count" style="font-size:11px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:0.04em;font-weight:500;"></div>
       <div class="home-disclaimer">Independent study tool — not affiliated with ASIC, ACER or any official examining body</div>
     </div>
 <!-- ══════════════════════════════════ -->
@@ -1551,7 +1552,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v161';
+    const APP_VERSION = 'v162';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3442,18 +3443,24 @@
         dot.style.background = '#22c55e';
         dot.style.boxShadow = '0 0 6px #22c55e';
         label.style.color = '#16a34a';
-        label.textContent = 'Live — reading from Google Sheet';
+        label.textContent = 'Reading from online question database';
       } else {
         dot.style.background = '#f59e0b';
         label.style.color = '#b45309';
-        label.textContent = 'Offline — using built-in questions';
+        label.textContent = 'Using built-in question bank';
       }
     }
+    // Update question count after fetch
+    const qc = document.getElementById('home-q-count');
+    if (qc) qc.textContent = ALL_QUESTIONS.length.toLocaleString() + ' practice questions';
   });
   // Set version number in settings
   (function() {
     const el = document.getElementById('ver-num');
     if (el) el.textContent = APP_VERSION;
+    // Set initial question count
+    const qc = document.getElementById('home-q-count');
+    if (qc) qc.textContent = ALL_QUESTIONS.length.toLocaleString() + ' practice questions';
     // Also add small version chip to settings header area
     const settingsTitle = document.querySelector('#panel-settings .screen-title');
     if (settingsTitle && !settingsTitle.querySelector('.ver-badge')) {
