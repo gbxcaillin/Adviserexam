@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Financial Adviser Exam Questions</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,600;0,700;1,700&display=swap" rel="stylesheet">
 <style>
   /* ── iOS scroll fix ── */
   * { -webkit-tap-highlight-color: transparent; }
@@ -18,23 +18,25 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #14203a; --navy-light: #1e2f52; --navy-mid: #243460;
-    --gold: #C9A84C; --gold-light: #e8c97a; --gold-subtle: rgba(201,168,76,0.12);
-    --white: #fff; --off-white: #f5f7fb; --surface: #ffffff;
-    --text-primary: #14203a; --text-secondary: #4a5568; --text-muted: #8a9ab8;
-    --border: rgba(20,32,58,0.1); --border-strong: rgba(20,32,58,0.18);
+    --navy: #001D34; --navy-light: #0a2d4a; --navy-mid: #0d3660;
+    --gold: #EC5C3B; --gold-light: #f07d61; --gold-subtle: rgba(236,92,59,0.12);
+    --white: #fff; --off-white: #FFEFE5; --surface: #ffffff;
+    --clime-action: #EC5C3B; --clime-pluck: #AB6116; --clime-flourish: #951740;
+    --clime-bloom: #F6C29A; --clime-swift: #FFEFE5;
+    --text-primary: #001D34; --text-secondary: #4a5568; --text-muted: #8a9ab8;
+    --border: rgba(0,29,52,0.1); --border-strong: rgba(0,29,52,0.18);
     --correct: #1e6e42; --correct-bg: #e8f5ee; --correct-border: rgba(30,110,66,0.2);
     --incorrect: #a83228; --incorrect-bg: #fdf0ee; --incorrect-border: rgba(168,50,40,0.2);
-    --shadow-sm: 0 1px 3px rgba(20,32,58,0.08), 0 1px 2px rgba(20,32,58,0.05);
-    --shadow-md: 0 4px 16px rgba(20,32,58,0.10), 0 2px 6px rgba(20,32,58,0.06);
-    --shadow-lg: 0 12px 40px rgba(20,32,58,0.14), 0 4px 12px rgba(20,32,58,0.08);
+    --shadow-sm: 0 1px 3px rgba(0,29,52,0.08), 0 1px 2px rgba(0,29,52,0.05);
+    --shadow-md: 0 4px 16px rgba(0,29,52,0.10), 0 2px 6px rgba(0,29,52,0.06);
+    --shadow-lg: 0 12px 40px rgba(0,29,52,0.14), 0 4px 12px rgba(0,29,52,0.08);
     --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px; --radius-xl: 20px;
     --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  html, body { height: 100%; background: #0d1626; font-family: 'Outfit', sans-serif; color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+  html, body { height: 100%; background: #001D34; font-family: 'Source Sans 3', sans-serif; color: var(--text-primary); -webkit-font-smoothing: antialiased; }
 
   /* ── PHONE FRAME ── */
-  .phone-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; height: 100vh; height: 100dvh; padding: 20px; background: radial-gradient(ellipse at 30% 20%, #1e2f52 0%, #0d1626 60%); }
+  .phone-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; height: 100vh; height: 100dvh; padding: 20px; background: radial-gradient(ellipse at 30% 20%, #0a2d4a 0%, #001D34 60%); }
   .phone-frame { width: 390px; height: min(844px, 100vh); height: min(844px, 100dvh); border-radius: 50px; background: var(--off-white); overflow: hidden; display: flex; flex-direction: column; position: relative; box-shadow: 0 50px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.1); }
   @media (max-width: 430px) {
     .phone-wrap { padding: 0; background: var(--off-white); }
@@ -42,7 +44,7 @@
   }
 
   /* ── NOTCH ── */
-  .notch { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 0 24px 6px; padding-top: max(38px, env(safe-area-inset-top, 38px)); flex-shrink: 0; box-shadow: 0 4px 16px rgba(20,32,58,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .notch { background: var(--navy); display: flex; justify-content: space-between; align-items: center; padding: 0 24px 6px; padding-top: max(38px, env(safe-area-inset-top, 38px)); flex-shrink: 0; box-shadow: 0 4px 16px rgba(0,29,52,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
   .notch-time { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.02em; }
   @media (max-width: 430px) { .notch-time { display: none; } }
   .notch-icons { display: flex; gap: 6px; align-items: center; opacity: 0.6; }
@@ -55,10 +57,10 @@
   @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
   /* ── BOTTOM NAV ── */
-  .bottom-nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-top: 0.5px solid rgba(20,32,58,0.08); display: grid; grid-template-columns: repeat(5,1fr); flex-shrink: 0; padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)); padding-left: env(safe-area-inset-left, 0); padding-right: env(safe-area-inset-right, 0); }
+  .bottom-nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-top: 0.5px solid rgba(0,29,52,0.08); display: grid; grid-template-columns: repeat(5,1fr); flex-shrink: 0; padding-bottom: max(20px, env(safe-area-inset-bottom, 20px)); padding-left: env(safe-area-inset-left, 0); padding-right: env(safe-area-inset-right, 0); }
   .nav-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 4px 4px; cursor: pointer; border: none; background: none; gap: 2px; position: relative; transition: all var(--transition); }
   .nav-tab.active::before { content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 3px; background: var(--gold); border-radius: 0 0 4px 4px; }
-  .nav-tab.active .nav-icon, .nav-tab.active .nav-label { color: var(--navy); }
+  .nav-tab.active .nav-icon, .nav-tab.active .nav-label { color: #001D34; }
   .nav-tab:not(.active) .nav-icon, .nav-tab:not(.active) .nav-label { color: #7a8aaa; }
   .nav-tab.active .nav-label { font-weight: 700; }
   .nav-tab:active { transform: scale(0.92); }
@@ -71,8 +73,8 @@
   .settings-cog:active { transform: scale(0.92) rotate(30deg); }
 
   /* ── SHARED SCREEN HEADER ── */
-  .screen-header { background: var(--navy); padding: 16px 20px 22px; box-shadow: 0 4px 16px rgba(20,32,58,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
-  .screen-title { font-family: 'Playfair Display', serif; font-size: 22px; color: white; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .screen-header { background: var(--navy); padding: 16px 20px 22px; box-shadow: 0 4px 16px rgba(0,29,52,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .screen-title { font-family: 'Source Serif 4', serif; font-size: 22px; color: white; margin-bottom: 4px; letter-spacing: -0.01em; }
   .screen-sub { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.01em; }
   .sec-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; padding-left: 2px; }
 
@@ -80,8 +82,8 @@
   #panel-home { background: var(--navy); display: none; flex-direction: column; align-items: center; gap: 5px; padding: 6px 16px 10px; min-height: 100%; }
   #panel-home.active { display: flex; }
 
-  .home-logo-ring { width: 34px; height: 34px; border-radius: 10px; background: var(--gold-subtle); border: 1.5px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(201,168,76,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
-  .home-title { font-family: 'Playfair Display', serif; font-size: 22px; color: white; text-align: center; line-height: 1.1; margin-bottom: 0; letter-spacing: -0.02em; }
+  .home-logo-ring { width: 34px; height: 34px; border-radius: 10px; background: var(--gold-subtle); border: 1.5px solid rgba(236,92,59,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 0; box-shadow: 0 0 0 4px rgba(236,92,59,0.06), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12); }
+  .home-title { font-family: 'Source Serif 4', serif; font-size: 22px; color: white; text-align: center; line-height: 1.1; margin-bottom: 0; letter-spacing: -0.02em; }
   .home-sub { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.5; margin-bottom: 0; max-width: 280px; font-weight: 400; }
 
   /* Stats */
@@ -89,15 +91,15 @@
   .home-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 7px 6px; text-align: center; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
   .home-stat:active { transform: scale(0.97); }
   .home-stat .icon { font-size: 13px; display: block; margin-bottom: 2px; }
-  .home-stat .num { font-family: 'Playfair Display', serif; font-size: 16px; color: white; display: block; line-height: 1; }
-  .home-stat .num.gold { color: var(--gold); }
-  .home-stat .num.fire { color: #ff9f43; }
+  .home-stat .num { font-family: 'Source Serif 4', serif; font-size: 16px; color: white; display: block; line-height: 1; }
+  .home-stat .num.gold { color: var(--clime-bloom); }
+  .home-stat .num.fire { color: #EC5C3B; }
   .stat-lbl { font-size: 9px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; font-weight: 500; }
 
   /* Nav cards */
   .home-nav-cards { display: flex; flex-direction: column; gap: 5px; width: 100%; margin-bottom: 0; }
   .home-nav-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-md); padding: 8px 11px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
-  .home-nav-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(201,168,76,0.3); }
+  .home-nav-card:hover { background: rgba(255,255,255,0.11); border-color: rgba(236,92,59,0.3); }
   .home-nav-card:active { transform: scale(0.98); background: rgba(255,255,255,0.13); }
   .home-nav-icon { width: 26px; height: 26px; border-radius: 7px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .home-nav-icon svg { stroke: rgba(255,255,255,0.85); }
@@ -109,7 +111,7 @@
   .home-disclaimer { font-size: 9px; color: rgba(255,255,255,0.35); text-align: center; line-height: 1.4; width: 100%; }
 
   /* ── PRACTICE QUESTIONS ── */
-  .pq-top { background: var(--navy); padding: 8px 16px 12px; flex-shrink: 0; border-bottom: 1.5px solid rgba(201,168,76,0.3); box-shadow: 0 6px 20px rgba(20,32,58,0.4), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(201,168,76,0.15); }
+  .pq-top { background: var(--navy); padding: 8px 16px 12px; flex-shrink: 0; border-bottom: 1.5px solid rgba(236,92,59,0.3); box-shadow: 0 6px 20px rgba(0,29,52,0.4), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(236,92,59,0.15); }
   .pq-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
   .pq-scenario-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
   .pq-counter { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); }
@@ -124,13 +126,13 @@
 
   /* Question body */
   .q-body { padding: 20px 16px 20px; }
-  .q-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-muted); background: rgba(20,32,58,0.06); padding: 4px 10px; border-radius: 99px; margin-bottom: 14px; }
+  .q-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-muted); background: rgba(0,29,52,0.06); padding: 4px 10px; border-radius: 99px; margin-bottom: 14px; }
   .q-text { font-size: 14px; line-height: 1.8; color: var(--text-primary); margin-bottom: 20px; font-weight: 400; }
 
   /* Answer options */
   .opts { display: flex; flex-direction: column; gap: 10px; }
   .opt { background: white; border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; transition: all var(--transition); box-shadow: var(--shadow-sm); }
-  .opt:hover:not(.disabled) { border-color: var(--navy); background: #f0f3fa; box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .opt:hover:not(.disabled) { border-color: var(--navy); background: #fde8df; box-shadow: var(--shadow-md); transform: translateY(-1px); }
   .opt:active:not(.disabled) { transform: scale(0.99) translateY(0); }
   .opt.correct { border-color: var(--correct); background: var(--correct-bg); box-shadow: 0 0 0 3px rgba(30,110,66,0.08); }
   .opt.incorrect { border-color: var(--incorrect); background: var(--incorrect-bg); box-shadow: 0 0 0 3px rgba(168,50,40,0.08); }
@@ -148,27 +150,27 @@
   .correct .expl-badge { background: rgba(30,110,66,0.12); color: var(--correct); }
   .incorrect .expl-badge { background: rgba(168,50,40,0.12); color: var(--incorrect); }
   .expl-t { font-size: 12px; line-height: 1.75; color: var(--text-primary); }
-  .next-btn { width: 100%; background: var(--navy); color: white; border: none; border-radius: var(--radius-md); padding: 16px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px; display: none; transition: all var(--transition); letter-spacing: 0.01em; }
+  .next-btn { width: 100%; background: var(--navy); color: white; border: none; border-radius: var(--radius-md); padding: 16px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 12px; display: none; transition: all var(--transition); letter-spacing: 0.01em; }
   .next-btn:hover { background: var(--navy-light); }
 
   /* Nav button row */
   .q-btn-row { display: flex; gap: 8px; margin-top: 14px; }
-  .btn-prev-q { flex: 1; background: white; color: var(--text-primary); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 12px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 14px rgba(20,32,58,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
-  .btn-prev-q:hover { border-color: var(--navy); background: #f0f3fa; }
+  .btn-prev-q { flex: 1; background: white; color: var(--text-primary); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 14px rgba(0,29,52,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
+  .btn-prev-q:hover { border-color: var(--navy); background: #fde8df; }
   .btn-prev-q:active { transform: scale(0.97); }
-  .btn-next-q { flex: 1; background: var(--navy); color: white; border: none; border-radius: var(--radius-md); padding: 12px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); letter-spacing: 0.01em; box-shadow: 0 4px 14px rgba(20,32,58,0.35), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .btn-next-q { flex: 1; background: var(--navy); color: white; border: none; border-radius: var(--radius-md); padding: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); letter-spacing: 0.01em; box-shadow: 0 4px 14px rgba(0,29,52,0.35), inset 0 1px 0 rgba(255,255,255,0.08); }
   .btn-next-q:hover { background: var(--navy-light); }
   .btn-next-q:active { transform: scale(0.97); }
 
   /* Exam length picker */
   .exam-length-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
   .exam-length-opt { border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 12px 8px; text-align: center; cursor: pointer; transition: all var(--transition); background: white; }
-  .exam-length-opt:hover { border-color: var(--navy); background: #f0f3fa; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .exam-length-opt:hover { border-color: var(--navy); background: #fde8df; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
   .exam-length-opt:active { transform: scale(0.97); }
-  .exam-length-opt.active { border-color: var(--navy); background: #f0f3fa; box-shadow: var(--shadow-sm); }
+  .exam-length-opt.active { border-color: var(--navy); background: #fde8df; box-shadow: var(--shadow-sm); }
   .elo-name { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
   .exam-length-opt.active .elo-name { color: var(--navy); }
-  .elo-num { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--text-primary); line-height: 1; margin-bottom: 2px; }
+  .elo-num { font-family: 'Source Serif 4', serif; font-size: 28px; color: var(--text-primary); line-height: 1; margin-bottom: 2px; }
   .exam-length-opt.active .elo-num { color: var(--navy); }
   .elo-time { font-size: 10px; color: var(--text-muted); }
   .exam-length-opt.active .elo-time { color: var(--navy-light); font-weight: 600; }
@@ -178,11 +180,11 @@
   .results-view.show { display:flex; animation: fadeSlideIn 0.3s ease; }
   .result-score-row { background:white; border:0.5px solid var(--border); border-radius:var(--radius-lg); padding:20px; display:flex; align-items:center; gap:16px; margin-bottom:12px; box-shadow: var(--shadow-sm); }
   .result-score-block { flex:1; }
-  .result-score-num { font-family:'Playfair Display',serif; font-size:52px; color:var(--navy); line-height:1; margin-bottom:4px; letter-spacing:-0.02em; }
+  .result-score-num { font-family:'Source Serif 4',serif; font-size:52px; color:var(--navy); line-height:1; margin-bottom:4px; letter-spacing:-0.02em; }
   .result-score-lbl { font-size:12px; color:var(--text-muted); line-height:1.5; }
   .res-mini-grid { display:flex; flex-direction:column; gap:7px; }
   .res-mini-cell { background:var(--off-white); border:0.5px solid var(--border); border-radius:var(--radius-sm); padding:7px 12px; text-align:center; min-width:62px; }
-  .res-mini-cell span { font-family:'Playfair Display',serif; font-size:18px; display:block; color:var(--text-primary); }
+  .res-mini-cell span { font-family:'Source Serif 4',serif; font-size:18px; display:block; color:var(--text-primary); }
   .res-mini-cell div { font-size:10px; color:var(--text-muted); margin-top:2px; letter-spacing:0.04em; text-transform:uppercase; }
   .res-mini-cell.c span { color:var(--correct); }
   .res-mini-cell.i span { color:var(--incorrect); }
@@ -195,9 +197,9 @@
   .weak-areas-subtitle { font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); padding:0 0 8px; margin-bottom:4px; border-bottom:0.5px solid var(--border); }
   .weak-area-name { font-size:14px; color:var(--text-primary); }
   .weak-area-pct { font-size:16px; font-weight:700; color:var(--incorrect); min-width:24px; text-align:right; }
-  .weak-areas-btn { width:100%; margin:14px 0 0; background:linear-gradient(180deg,#2d8a56 0%,#1e6e42 100%); border:none; border-radius:var(--radius-md); padding:15px 16px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; color:white; cursor:pointer; display:block; text-align:center; transition:all var(--transition); box-shadow:0 4px 14px rgba(30,110,66,0.35),inset 0 1px 0 rgba(255,255,255,0.15); }
+  .weak-areas-btn { width:100%; margin:14px 0 0; background:linear-gradient(180deg,#2d8a56 0%,#1e6e42 100%); border:none; border-radius:var(--radius-md); padding:15px 16px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; color:white; cursor:pointer; display:block; text-align:center; transition:all var(--transition); box-shadow:0 4px 14px rgba(30,110,66,0.35),inset 0 1px 0 rgba(255,255,255,0.15); }
   .weak-areas-btn:hover { background:#175c35; }
-  .btn-review { width:100%; background:linear-gradient(180deg,#1e2f52 0%,#14203a 100%); color:white; border:none; border-radius:var(--radius-md); padding:16px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; cursor:pointer; margin-bottom:12px; display:flex; align-items:center; justify-content:center; gap:8px; transition:all var(--transition); letter-spacing:0.01em; box-shadow:0 4px 14px rgba(20,32,58,0.35),inset 0 1px 0 rgba(255,255,255,0.1); }
+  .btn-review { width:100%; background:linear-gradient(180deg,#0a2d4a 0%,#001D34 100%); color:white; border:none; border-radius:var(--radius-md); padding:16px; font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:600; cursor:pointer; margin-bottom:12px; display:flex; align-items:center; justify-content:center; gap:8px; transition:all var(--transition); letter-spacing:0.01em; box-shadow:0 4px 14px rgba(0,29,52,0.35),inset 0 1px 0 rgba(255,255,255,0.1); }
   .btn-review:hover { background:var(--navy-light); }
   .result-actions-row { display:flex; gap:8px; }
 
@@ -207,7 +209,7 @@
   .review-header { background:var(--navy); padding:16px 16px; flex-shrink:0; }
   .review-back { background:rgba(255,255,255,0.1); border:none; border-radius:var(--radius-sm); width:34px; height:34px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:white; margin-bottom:8px; transition: background var(--transition); }
   .review-back:hover { background:rgba(255,255,255,0.18); }
-  .review-title { font-family:'Playfair Display',serif; font-size:20px; color:white; letter-spacing:-0.01em; }
+  .review-title { font-family:'Source Serif 4',serif; font-size:20px; color:white; letter-spacing:-0.01em; }
   .review-meta { font-size:12px; color:rgba(255,255,255,0.4); margin-top:3px; }
   .review-list { flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; padding:16px 14px 100px; display:flex; flex-direction:column; gap:12px; }
   .review-item { background:white; border:0.5px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm); }
@@ -232,16 +234,16 @@
   .past-exam-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.09); border-radius:var(--radius-md); padding:10px 14px; display:flex; align-items:center; gap:12px; margin-bottom:7px; cursor:pointer; transition:all var(--transition); }
   .past-exam-card:hover { background:rgba(255,255,255,0.11); }
   .past-exam-card:active { transform: scale(0.98); }
-  .past-exam-score { font-family:'Playfair Display',serif; font-size:24px; color:var(--gold); min-width:46px; }
+  .past-exam-score { font-family:'Source Serif 4',serif; font-size:24px; color:var(--gold); min-width:46px; }
   .past-exam-info { flex:1; }
   .past-exam-meta { font-size:12px; color:rgba(255,255,255,0.4); margin-top:2px; }
   .past-exam-arrow { color:rgba(255,255,255,0.2); font-size:18px; }
 
   /* Exam history cards */
   .exam-history-card { background:white; border:0.5px solid var(--border); border-radius:var(--radius-lg); padding:16px 16px; display:flex; align-items:center; gap:14px; margin-bottom:9px; cursor:pointer; transition:all var(--transition); box-shadow:var(--shadow-sm); }
-  .exam-history-card:hover { border-color:rgba(20,32,58,0.25); box-shadow:var(--shadow-md); transform:translateY(-1px); }
+  .exam-history-card:hover { border-color:rgba(0,29,52,0.25); box-shadow:var(--shadow-md); transform:translateY(-1px); }
   .exam-history-card:active { transform: scale(0.98); }
-  .exam-history-score { font-family:'Playfair Display',serif; font-size:28px; min-width:54px; text-align:center; line-height:1; }
+  .exam-history-score { font-family:'Source Serif 4',serif; font-size:28px; min-width:54px; text-align:center; line-height:1; }
   .exam-history-score.pass { color:var(--correct); }
   .exam-history-score.fail { color:var(--incorrect); }
   .exam-history-info { flex:1; }
@@ -251,7 +253,7 @@
   .exam-history-card:hover .exam-history-arrow { transform:translateX(2px); }
 
   /* Prev exams button */
-  .btn-prev-exams { width:100%; margin-top:10px; background:white; color:var(--text-muted); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); opacity:0.7; }
+  .btn-prev-exams { width:100%; margin-top:10px; background:white; color:var(--text-muted); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); opacity:0.7; }
   .btn-prev-exams:hover { opacity:1; border-color:var(--navy); color:var(--navy); }
   .btn-prev-exams.has-exams { opacity:1; color:var(--navy); border-color:var(--navy); }
   .exam-empty-state { background:white; border:0.5px solid var(--border); border-radius:var(--radius-lg); padding:28px 16px; text-align:center; box-shadow:var(--shadow-sm); }
@@ -273,18 +275,18 @@
   .tog { padding:5px 11px; border-radius:6px; font-size:12px; cursor:pointer; transition:all var(--transition); color:var(--text-muted); font-weight:500; }
   .tog.active { background:var(--navy); color:white; font-weight:600; }
   .warn-box { background:#fffbec; border:0.5px solid #e8c84a; border-radius:var(--radius-md); padding:12px 16px; font-size:12px; color:#7a5c00; margin-bottom:14px; display:flex; gap:9px; align-items:flex-start; line-height:1.55; }
-  .btn-p { width:100%; background:var(--navy); color:white; border:none; border-radius:var(--radius-md); padding:15px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; cursor:pointer; transition:all var(--transition); letter-spacing:0.01em; }
+  .btn-p { width:100%; background:var(--navy); color:white; border:none; border-radius:var(--radius-md); padding:15px; font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:600; cursor:pointer; transition:all var(--transition); letter-spacing:0.01em; }
   .btn-p:hover { background:var(--navy-light); }
   .btn-p:active { transform:scale(0.98); }
-  .btn-o { width:100%; background:white; color:var(--navy); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; cursor:pointer; margin-top:8px; transition:all var(--transition); box-shadow:0 4px 14px rgba(20,32,58,0.1),inset 0 1px 0 rgba(255,255,255,0.9); }
-  .btn-o:hover { border-color:var(--navy); background:#f0f3fa; }
+  .btn-o { width:100%; background:white; color:var(--navy); border:1.5px solid var(--border); border-radius:var(--radius-md); padding:16px; font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:600; cursor:pointer; margin-top:8px; transition:all var(--transition); box-shadow:0 4px 14px rgba(0,29,52,0.1),inset 0 1px 0 rgba(255,255,255,0.9); }
+  .btn-o:hover { border-color:var(--navy); background:#fde8df; }
   .btn-o:active { transform:scale(0.98); }
 
   /* Exam active view */
   .exam-active-view { display:none; flex-direction:column; height:100%; }
-  .exam-live-header { background:var(--navy); padding:11px 16px 13px; flex-shrink:0; box-shadow: 0 4px 16px rgba(20,32,58,0.3), inset 0 -1px 0 rgba(255,255,255,0.05); }
-  .exam-live-title { font-family:'Playfair Display',serif; font-size:16px; color:white; margin-bottom:7px; letter-spacing:-0.01em; }
-  .exam-exit-btn { display:flex; align-items:center; gap:6px; background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:rgba(147,197,253,0.95); border-radius:99px; padding:6px 13px; font-family:'Outfit',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all var(--transition); box-shadow:0 2px 8px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.08); }
+  .exam-live-header { background:var(--navy); padding:11px 16px 13px; flex-shrink:0; box-shadow: 0 4px 16px rgba(0,29,52,0.3), inset 0 -1px 0 rgba(255,255,255,0.05); }
+  .exam-live-title { font-family:'Source Serif 4',serif; font-size:16px; color:white; margin-bottom:7px; letter-spacing:-0.01em; }
+  .exam-exit-btn { display:flex; align-items:center; gap:6px; background:rgba(59,130,246,0.2); border:1px solid rgba(59,130,246,0.4); color:rgba(147,197,253,0.95); border-radius:99px; padding:6px 13px; font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all var(--transition); box-shadow:0 2px 8px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.08); }
   .exam-exit-btn:hover { background:rgba(59,130,246,0.3); border-color:rgba(59,130,246,0.6); }
   .exam-exit-btn:active { transform:scale(0.95); }
   .theme-dark .exam-exit-btn { background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.3); color:rgba(147,197,253,0.9); }
@@ -306,39 +308,39 @@
   .exam-carousel-track { display:flex; height:100%; transition:transform 0.38s cubic-bezier(0.4,0,0.2,1); }
   .exam-slide { min-width:100%; height:100%; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; padding:16px 16px 20px; background:var(--off-white); box-sizing:border-box; }
   .exam-opt { background:white; border:1.5px solid var(--border); border-radius:var(--radius-md); padding:12px 16px; cursor:pointer; display:flex; align-items:flex-start; gap:11px; margin-bottom:8px; transition:all var(--transition); box-shadow:var(--shadow-sm); }
-  .exam-opt:hover { border-color:var(--navy); background:#f0f3fa; box-shadow:var(--shadow-md); transform:translateY(-1px); }
+  .exam-opt:hover { border-color:var(--navy); background:#fde8df; box-shadow:var(--shadow-md); transform:translateY(-1px); }
   .exam-opt:active { transform:scale(0.99); }
-  .exam-opt.exam-selected { border-color:var(--gold); background:var(--gold-subtle); box-shadow:0 0 0 3px rgba(201,168,76,0.1); }
+  .exam-opt.exam-selected { border-color:var(--gold); background:var(--gold-subtle); box-shadow:0 0 0 3px rgba(236,92,59,0.1); }
 
   /* Exam nav */
-  .exam-nav-row { background:white; border-top:0.5px solid var(--border); padding:10px 16px 20px; display:flex; align-items:center; gap:10px; flex-shrink:0; box-shadow:0 -4px 16px rgba(20,32,58,0.06); }
-  .exam-nav-btn { flex:1; background:var(--navy); color:white; border:none; border-radius:var(--radius-md); padding:12px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); letter-spacing:0.01em; }
+  .exam-nav-row { background:white; border-top:0.5px solid var(--border); padding:10px 16px 20px; display:flex; align-items:center; gap:10px; flex-shrink:0; box-shadow:0 -4px 16px rgba(0,29,52,0.06); }
+  .exam-nav-btn { flex:1; background:var(--navy); color:white; border:none; border-radius:var(--radius-md); padding:12px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); letter-spacing:0.01em; }
   .exam-nav-btn:hover { background:var(--navy-light); }
   .exam-nav-btn:active { transform:scale(0.97); }
-  .exam-nav-btn.outline { background:white; color:var(--navy); border:1.5px solid var(--border); box-shadow: 0 4px 14px rgba(20,32,58,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
-  .exam-nav-btn.outline:hover { border-color:var(--navy); background:#f0f3fa; }
+  .exam-nav-btn.outline { background:white; color:var(--navy); border:1.5px solid var(--border); box-shadow: 0 4px 14px rgba(0,29,52,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
+  .exam-nav-btn.outline:hover { border-color:var(--navy); background:#fde8df; }
 
   /* Exam exit dialog */
   .exam-exit-overlay { display:none; position:absolute; inset:0; background:rgba(14,20,32,0.6); backdrop-filter:blur(4px); z-index:30; align-items:flex-end; padding:16px; }
   .exam-exit-overlay.show { display:flex; animation:fadeSlideIn 0.2s ease; }
   .exam-exit-dialog { background:white; border-radius:var(--radius-xl); padding:24px; width:100%; box-shadow:var(--shadow-lg); }
-  .exam-exit-title { font-family:'Playfair Display',serif; font-size:20px; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
+  .exam-exit-title { font-family:'Source Serif 4',serif; font-size:20px; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
   .exam-exit-msg { font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:20px; }
   .exam-exit-btns { display:flex; gap:10px; }
-  .exam-exit-btns button { flex:1; padding:12px; border-radius:var(--radius-md); font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); border:1.5px solid var(--border); background:white; color:var(--text-primary); }
+  .exam-exit-btns button { flex:1; padding:12px; border-radius:var(--radius-md); font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); border:1.5px solid var(--border); background:white; color:var(--text-primary); }
   .exam-exit-btns button:active { transform:scale(0.97); }
   .exam-exit-btns button.destructive { background:#fdf0ee; color:var(--incorrect); border-color:rgba(168,50,40,0.2); }
   .exam-exit-btns button.destructive:hover { background:#fae4e2; }
 
   /* Scenario box */
-  .exam-scenario-box { background:rgba(20,32,58,0.04); border:1.5px solid rgba(201,168,76,0.25); border-left:3px solid var(--gold); border-radius:var(--radius-md); padding:12px 16px; margin-bottom:14px; }
+  .exam-scenario-box { background:rgba(0,29,52,0.04); border:1.5px solid rgba(236,92,59,0.25); border-left:3px solid var(--gold); border-radius:var(--radius-md); padding:12px 16px; margin-bottom:14px; }
   .exam-scenario-text { font-size:12px; line-height:1.65; color:var(--text-secondary); }
 
   /* ── SECTIONS TAB ── */
   .sec-chip { background:white; border:1.5px solid var(--border); border-radius:var(--radius-md); padding:12px 16px; cursor:pointer; transition:all 0.18s cubic-bezier(0.34,1.56,0.64,1); box-shadow:var(--shadow-sm); }
-  .sec-chip:hover { border-color:rgba(20,32,58,0.25); box-shadow:var(--shadow-md); transform:translateY(-1px); }
+  .sec-chip:hover { border-color:rgba(0,29,52,0.25); box-shadow:var(--shadow-md); transform:translateY(-1px); }
   .sec-chip:active { transform:scale(0.96); }
-  .sec-chip.sel { background:#f0f3fa; border-color:var(--navy); box-shadow:0 0 0 3px rgba(20,32,58,0.06); transform:scale(1.02); }
+  .sec-chip.sel { background:#fde8df; border-color:var(--navy); box-shadow:0 0 0 3px rgba(0,29,52,0.06); transform:scale(1.02); }
   .s-name { font-size:14px; font-weight:600; color:var(--text-primary); margin-bottom:3px; letter-spacing:-0.01em; }
   .s-meta { font-size:10px; color:var(--text-muted); }
   .s-count { font-size:12px; font-weight:700; color:var(--text-muted); background:var(--off-white); border:0.5px solid var(--border); border-radius:99px; padding:2px 9px; float:right; }
@@ -377,97 +379,97 @@
   #prd-body { background:var(--off-white); }
 
   /* ── DARK MODE ── */
-  .theme-dark { --navy:#0f1929; --navy-light:#1a2744; --off-white:#1a1f2e; --white:#242c3d; --text-primary:#e8ecf4; --text-secondary:#9aa5be; --text-muted:#5a6a8a; --border:rgba(255,255,255,0.1); --correct-bg:#0f2818; --incorrect-bg:#2a0f0e; background:#111827; }
-  .theme-dark .notch, .theme-dark .screen-header, .theme-dark .pq-top, .theme-dark .q-header, .theme-dark .exam-top, .theme-dark .exam-live-header { background:#0f1929; }
+  .theme-dark { --navy:#001020; --navy-light:#0a2d4a; --off-white:#1a1f2e; --white:#242c3d; --text-primary:#e8ecf4; --text-secondary:#9aa5be; --text-muted:#5a6a8a; --border:rgba(255,255,255,0.1); --correct-bg:#0f2818; --incorrect-bg:#2a0f0e; background:#001D34; }
+  .theme-dark .notch, .theme-dark .screen-header, .theme-dark .pq-top, .theme-dark .q-header, .theme-dark .exam-top, .theme-dark .exam-live-header { background:#001020; }
   .theme-dark .bottom-nav { background:rgba(26,31,46,0.97); border-color:rgba(255,255,255,0.08); }
-  .theme-dark .tab-content { background:#111827; }
-  .theme-dark .q-body, .theme-dark .settings-group, .theme-dark .exam-setup-card, .theme-dark .sec-chip, .theme-dark .res-card { background:#1a1f2e; border-color:rgba(255,255,255,0.08); }
-  .theme-dark .opt { background:#111827; border-color:rgba(255,255,255,0.1); box-shadow:none; }
+  .theme-dark .tab-content { background:#001D34; }
+  .theme-dark .q-body, .theme-dark .settings-group, .theme-dark .exam-setup-card, .theme-dark .sec-chip, .theme-dark .res-card { background:#001020; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .opt { background:#001D34; border-color:rgba(255,255,255,0.1); box-shadow:none; }
   .theme-dark .opt:hover:not(.disabled) { background:#1f2840; }
-  .theme-dark .opt-l { background:#1a1f2e; border-color:rgba(255,255,255,0.12); color:#9aa5be; }
-  .theme-dark .seg-ctrl { background:#111827; border-color:rgba(255,255,255,0.1); }
-  .theme-dark .text-preview { background:#111827; border-color:rgba(255,255,255,0.08); }
-  .theme-dark .text-preview-opt { background:#1a1f2e; border-color:rgba(255,255,255,0.1); }
-  .theme-dark #panel-home { background:#0f1929; }
+  .theme-dark .opt-l { background:#001020; border-color:rgba(255,255,255,0.12); color:#9aa5be; }
+  .theme-dark .seg-ctrl { background:#001D34; border-color:rgba(255,255,255,0.1); }
+  .theme-dark .text-preview { background:#001D34; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .text-preview-opt { background:#001020; border-color:rgba(255,255,255,0.1); }
+  .theme-dark #panel-home { background:#001020; }
   .theme-dark .home-nav-card, .theme-dark .home-stat { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); }
-  .theme-dark .phone-frame { background:#1a1f2e; }
-  .theme-dark .nav-tab.active .nav-icon, .theme-dark .nav-tab.active .nav-label { color:#e8c97a; }
-  .theme-dark .nav-tab.active::before { background:#e8c97a; }
+  .theme-dark .phone-frame { background:#001020; }
+  .theme-dark .nav-tab.active .nav-icon, .theme-dark .nav-tab.active .nav-label { color:#f07d61; }
+  .theme-dark .nav-tab.active::before { background:#f07d61; }
   .theme-dark .nav-tab:not(.active) .nav-icon, .theme-dark .nav-tab:not(.active) .nav-label { color:rgba(255,255,255,0.3); }
-  .theme-dark .result-score-row, .theme-dark .exam-history-card, .theme-dark .review-item { background:#1a1f2e; border-color:rgba(255,255,255,0.08); box-shadow:none; }
+  .theme-dark .result-score-row, .theme-dark .exam-history-card, .theme-dark .review-item { background:#001020; border-color:rgba(255,255,255,0.08); box-shadow:none; }
   .theme-dark .result-score-num { color:#e8ecf4; }
-  .theme-dark .res-mini-cell { background:#111827; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .res-mini-cell { background:#001D34; border-color:rgba(255,255,255,0.08); }
   .theme-dark .res-mini-cell span { color:#e8ecf4; }
-  .theme-dark .weak-areas-card { background:#1a1f2e; border-color:rgba(255,255,255,0.08); box-shadow:none; }
-  .theme-dark .weak-areas-title { background:#0f1929; }
+  .theme-dark .weak-areas-card { background:#001020; border-color:rgba(255,255,255,0.08); box-shadow:none; }
+  .theme-dark .weak-areas-title { background:#001020; }
   .theme-dark .weak-area-name { color:#e8ecf4; }
   .theme-dark .weak-area-pct { color:#eb5757; }
-  .theme-dark .btn-o, .theme-dark .btn-prev-q, .theme-dark .btn-prev-exams { background:#1a1f2e; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
+  .theme-dark .btn-o, .theme-dark .btn-prev-q, .theme-dark .btn-prev-exams { background:#001020; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
   .theme-dark .btn-p { border:1px solid rgba(255,255,255,0.18); }
-  .theme-dark .exam-setup-card { background:#1a1f2e; border-color:rgba(255,255,255,0.08); }
-  .theme-dark .exam-opt { background:#1a1f2e; border-color:rgba(255,255,255,0.1); box-shadow:none; }
-  .theme-dark .exam-opt:hover { background:#242c3d; }
-  .theme-dark .exam-opt.exam-selected { border-color:#e8c97a; background:rgba(201,168,76,0.1); }
-  .theme-dark .exam-nav-row { background:#1a1f2e; border-color:rgba(255,255,255,0.08); box-shadow:none; }
+  .theme-dark .exam-setup-card { background:#001020; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .exam-opt { background:#001020; border-color:rgba(255,255,255,0.1); box-shadow:none; }
+  .theme-dark .exam-opt:hover { background:#0a2d4a; }
+  .theme-dark .exam-opt.exam-selected { border-color:#f07d61; background:rgba(236,92,59,0.1); }
+  .theme-dark .exam-nav-row { background:#001020; border-color:rgba(255,255,255,0.08); box-shadow:none; }
   .theme-dark .exam-q-counter { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); }
-  .theme-dark .exam-nav-btn { background:#1a2744; color:#e8ecf4; border-color:rgba(255,255,255,0.1); }
-  .theme-dark .exam-nav-btn.outline { background:#1a1f2e; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
-  .theme-dark .exam-exit-dialog { background:#1a1f2e; }
+  .theme-dark .exam-nav-btn { background:#0a2d4a; color:#e8ecf4; border-color:rgba(255,255,255,0.1); }
+  .theme-dark .exam-nav-btn.outline { background:#001020; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
+  .theme-dark .exam-exit-dialog { background:#001020; }
   .theme-dark .exam-exit-title { color:#e8ecf4; }
   .theme-dark .exam-exit-msg { color:#9aa5be; }
-  .theme-dark .exam-exit-btns button { background:#1a1f2e; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
+  .theme-dark .exam-exit-btns button { background:#001020; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
   .theme-dark .exam-exit-btns button.destructive { background:#2a0f0e; color:#eb5757; border-color:rgba(235,87,87,0.3); }
-  .theme-dark .review-panel { background:#111827; }
-  .theme-dark .review-item { background:#1a1f2e; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .review-panel { background:#001D34; }
+  .theme-dark .review-item { background:#001020; border-color:rgba(255,255,255,0.08); }
   .theme-dark .review-q-text { color:#e8ecf4; }
   .theme-dark .review-q-num { color:#5a6a8a; }
-  .theme-dark .review-ans.neutral { background:#111827; color:#9aa5be; }
+  .theme-dark .review-ans.neutral { background:#001D34; color:#9aa5be; }
   .theme-dark .review-ans.correct { background:#0f2818; color:#6fcf97; border-color:rgba(111,207,151,0.2); }
   .theme-dark .review-ans.incorrect { background:#2a0f0e; color:#eb5757; border-color:rgba(235,87,87,0.2); }
-  .theme-dark .review-expl { background:rgba(201,168,76,0.08); color:#e8ecf4; }
-  .theme-dark #past-exams-page, .theme-dark #past-exam-detail, .theme-dark #prd-body { background:#111827; }
+  .theme-dark .review-expl { background:rgba(236,92,59,0.08); color:#e8ecf4; }
+  .theme-dark #past-exams-page, .theme-dark #past-exam-detail, .theme-dark #prd-body { background:#001D34; }
   .theme-dark .exam-history-title { color:#e8ecf4; }
   .theme-dark .exam-history-meta { color:#5a6a8a; }
   .theme-dark .exam-history-score.pass { color:#6fcf97; }
   .theme-dark .exam-history-score.fail { color:#eb5757; }
-  .theme-dark .exam-empty-state { background:#1a1f2e; border-color:rgba(255,255,255,0.08); box-shadow:none; }
+  .theme-dark .exam-empty-state { background:#001020; border-color:rgba(255,255,255,0.08); box-shadow:none; }
   .theme-dark .exam-empty-title { color:#e8ecf4; }
   .theme-dark .exam-empty-sub { color:#5a6a8a; }
-  .theme-dark .q-body { background:#111827; }
+  .theme-dark .q-body { background:#001D34; }
   .theme-dark .q-tag { background:rgba(255,255,255,0.07); color:#9aa5be; }
   .theme-dark .q-text { color:#e8ecf4; }
   .theme-dark .expl-box.correct { background:#0f2818; border-color:rgba(111,207,151,0.25); }
   .theme-dark .expl-box.incorrect { background:#2a0f0e; border-color:rgba(235,87,87,0.25); }
   .theme-dark .expl-t { color:#e8ecf4; }
   .theme-dark #pq-scenario-block { background:rgba(255,255,255,0.05); }
-  .theme-dark .sec-chip.sel { background:#1a2744; border-color:#e8c97a; transform:scale(1.02); }
+  .theme-dark .sec-chip.sel { background:#0a2d4a; border-color:#f07d61; transform:scale(1.02); }
   .theme-dark .s-name { color:#e8ecf4; }
   .theme-dark .s-meta { color:#5a6a8a; }
-  .theme-dark .s-count { color:#9aa5be; background:#111827; border-color:rgba(255,255,255,0.08); }
-  .theme-dark #sec-start-btn { background:#1a2744; }
+  .theme-dark .s-count { color:#9aa5be; background:#001D34; border-color:rgba(255,255,255,0.08); }
+  .theme-dark #sec-start-btn { background:#0a2d4a; }
   .theme-dark .r-title { color:#e8ecf4; }
   .theme-dark .r-desc { color:#5a6a8a; }
   .theme-dark .screen-sub { color:#9aa5be; }
-  .theme-dark .btn-review { background:#1a2744; }
-  .theme-dark .btn-review:hover { background:#243460; }
+  .theme-dark .btn-review { background:#0a2d4a; }
+  .theme-dark .btn-review:hover { background:#0d3660; }
   .theme-dark .screen-title { color:white; }
-  .theme-dark #panel-sections .screen-header, .theme-dark #panel-resources .screen-header { background:#0f1929; }
-  .theme-dark .tog-pill { background:#111827; border-color:rgba(255,255,255,0.1); }
+  .theme-dark #panel-sections .screen-header, .theme-dark #panel-resources .screen-header { background:#001020; }
+  .theme-dark .tog-pill { background:#001D34; border-color:rgba(255,255,255,0.1); }
   .theme-dark .tog { color:#5a6a8a; }
-  .theme-dark .tog.active { background:#1a2744; color:#e8ecf4; }
-  .theme-dark .exam-length-opt { background:#1a1f2e; border-color:rgba(255,255,255,0.08); }
-  .theme-dark .exam-length-opt.active { background:#242c3d; border-color:#e8c97a; }
+  .theme-dark .tog.active { background:#0a2d4a; color:#e8ecf4; }
+  .theme-dark .exam-length-opt { background:#001020; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .exam-length-opt.active { background:#0a2d4a; border-color:#f07d61; }
   .theme-dark .elo-name { color:#9aa5be; }
   .theme-dark .elo-num { color:#e8ecf4; }
   .theme-dark .elo-time { color:#5a6a8a; }
-  .theme-dark .exam-length-opt.active .elo-name, .theme-dark .exam-length-opt.active .elo-num, .theme-dark .exam-length-opt.active .elo-time { color:#e8c97a; }
-  .theme-dark .results-view { background:#111827; }
+  .theme-dark .exam-length-opt.active .elo-name, .theme-dark .exam-length-opt.active .elo-num, .theme-dark .exam-length-opt.active .elo-time { color:#f07d61; }
+  .theme-dark .results-view { background:#001D34; }
   .theme-dark .opt.correct .opt-l { background:var(--correct); border-color:var(--correct); color:white; }
   .theme-dark .opt.incorrect .opt-l { background:var(--incorrect); border-color:var(--incorrect); color:white; }
   .theme-dark .setup-lbl { color:#e8ecf4; }
   .theme-dark .setup-sub { color:#5a6a8a; }
-  .theme-dark .warn-box { background:rgba(201,168,76,0.1); border-color:rgba(201,168,76,0.3); color:#c9a84c; }
-  .theme-dark .res-card { background:#1a1f2e; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .warn-box { background:rgba(236,92,59,0.1); border-color:rgba(236,92,59,0.3); color:#EC5C3B; }
+  .theme-dark .res-card { background:#001020; border-color:rgba(255,255,255,0.08); }
   .theme-dark .past-exam-card { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.08); }
 
   /* Score ring */
@@ -478,7 +480,7 @@
   .score-ring-fill.pass { stroke:var(--correct); }
   .score-ring-fill.fail { stroke:var(--incorrect); }
   .score-ring-inner { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .score-ring-num { font-family:'Playfair Display',serif; font-size:28px; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
+  .score-ring-num { font-family:'Source Serif 4',serif; font-size:28px; color:var(--navy); line-height:1; letter-spacing:-0.02em; }
   .score-ring-pct { font-size:10px; color:var(--text-muted); font-weight:600; margin-top:1px; }
   .score-ring-icon { font-size:14px; margin-top:2px; }
 
@@ -492,7 +494,7 @@
   .home-progress-count { font-size:10px; font-weight:600; color:rgba(255,255,255,0.5); }
   .home-progress-track { height:4px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:visible; }
   .home-progress-fill { height:100%; background:linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius:99px; transition:width 0.8s cubic-bezier(0.4,0,0.2,1); width:0%; }
-  @keyframes barGlow { 0%,100% { box-shadow:0 0 6px 1px rgba(201,168,76,0.5); } 50% { box-shadow:0 0 14px 3px rgba(232,201,122,0.85); } }
+  @keyframes barGlow { 0%,100% { box-shadow:0 0 6px 1px rgba(236,92,59,0.5); } 50% { box-shadow:0 0 14px 3px rgba(232,201,122,0.85); } }
   .home-progress-fill.complete { animation:barGlow 2s ease-in-out infinite; }
 
   /* Dark mode refinements */
@@ -500,19 +502,19 @@
   .theme-dark .score-ring-pct { color:#5a6a8a; }
   .theme-dark .home-progress-track { background:rgba(255,255,255,0.06); }
   .theme-dark .result-score-lbl { color:#9aa5be; }
-  .theme-dark .sec-chip { background:#1a1f2e; }
+  .theme-dark .sec-chip { background:#001020; }
                 .theme-dark .opt-l { border-radius:50%; }
   .theme-dark .exam-setup-card { box-shadow:none; }
   .theme-dark .home-progress-title { color:rgba(255,255,255,0.35); }
   .theme-dark .home-progress-count { color:rgba(255,255,255,0.45); }
 
   /* ── OPEN BOOK OVERLAY ── */
-  .ob-overlay { display:none; position:absolute; inset:0; z-index:40; background:rgba(8,12,22,0.75); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px; }
+  .ob-overlay { display:none; position:absolute; inset:0; z-index:40; background:rgba(0,16,32,0.75); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:16px; }
   .ob-overlay.show { display:flex; animation:fadeSlideIn 0.22s ease; }
   .ob-dialog { background:var(--navy); border-radius:var(--radius-xl); padding:20px; width:100%; max-height:calc(100% - 32px); overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.07); }
   .ob-top { text-align:center; margin-bottom:12px; }
-  .ob-icon-wrap { width:48px; height:48px; background:rgba(201,168,76,0.12); border:1.5px solid rgba(201,168,76,0.35); border-radius:14px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; box-shadow:0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
-  .ob-title { font-family:'Playfair Display',serif; font-size:20px; color:white; margin-bottom:4px; letter-spacing:-0.01em; }
+  .ob-icon-wrap { width:48px; height:48px; background:rgba(236,92,59,0.12); border:1.5px solid rgba(236,92,59,0.35); border-radius:14px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; box-shadow:0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .ob-title { font-family:'Source Serif 4',serif; font-size:20px; color:white; margin-bottom:4px; letter-spacing:-0.01em; }
   .ob-subtitle { font-size:12px; color:rgba(255,255,255,0.4); }
   .ob-body { margin-bottom:14px; }
   .ob-msg { font-size:13px; color:rgba(255,255,255,0.65); line-height:1.55; margin-bottom:12px; }
@@ -522,13 +524,13 @@
   .ob-check-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.4; }
   .ob-check-icon { width:24px; height:24px; border-radius:50%; background:rgba(30,110,66,0.3); border:1px solid rgba(111,207,151,0.35); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#6fcf97; }
   .ob-btns { display:flex; gap:10px; margin-top:20px; }
-  .ob-btns button { flex:1; padding:16px; border-radius:var(--radius-md); font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); }
+  .ob-btns button { flex:1; padding:16px; border-radius:var(--radius-md); font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; cursor:pointer; transition:all var(--transition); }
   .ob-btn-cancel { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.1); }
   .ob-btn-cancel:hover { background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.8); }
-  .ob-btn-start { background:var(--gold); color:var(--navy); border:none; font-weight:700; box-shadow:0 4px 14px rgba(201,168,76,0.3), inset 0 1px 0 rgba(255,255,255,0.2); }
+  .ob-btn-start { background:var(--gold); color:var(--navy); border:none; font-weight:700; box-shadow:0 4px 14px rgba(236,92,59,0.3), inset 0 1px 0 rgba(255,255,255,0.2); }
   .ob-btn-start:hover { background:var(--gold-light); }
   .ob-btn-start:active { transform:scale(0.97); }
-  .ob-btn { width:100%; padding:16px; border-radius:var(--radius-md); font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all var(--transition); background:var(--gold); color:var(--navy); border:none; box-shadow:0 4px 16px rgba(201,168,76,0.35),inset 0 1px 0 rgba(255,255,255,0.25); letter-spacing:0.01em; margin-top:4px; }
+  .ob-btn { width:100%; padding:16px; border-radius:var(--radius-md); font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all var(--transition); background:var(--gold); color:var(--navy); border:none; box-shadow:0 4px 16px rgba(236,92,59,0.35),inset 0 1px 0 rgba(255,255,255,0.25); letter-spacing:0.01em; margin-top:4px; }
   .ob-btn:hover { background:var(--gold-light); }
   .ob-btn:active { transform:scale(0.97); }
 
@@ -584,12 +586,12 @@
   #score-ring-wrap { position: relative; }
 
   /* ── DARK MODE CONSISTENCY FIXES ── */
-  .theme-dark .review-header { background:#0f1929; box-shadow:none; }
+  .theme-dark .review-header { background:#001020; box-shadow:none; }
   .theme-dark .review-back { background:rgba(255,255,255,0.08); }
   .theme-dark .review-back:hover { background:rgba(255,255,255,0.14); }
   .theme-dark .review-title { color:#e8ecf4; }
   .theme-dark .review-meta { color:rgba(255,255,255,0.35); }
-  .theme-dark .result-actions-row .btn-o { background:#1a1f2e; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
+  .theme-dark .result-actions-row .btn-o { background:#001020; color:#e8ecf4; border-color:rgba(255,255,255,0.12); }
   .theme-dark .score-ring-num { color:#e8ecf4; }
   .theme-dark .score-ring-pct { color:#5a6a8a; }
   .theme-dark .score-ring-icon { color:#6fcf97; }
@@ -599,7 +601,7 @@
   .theme-dark .home-progress-count { color:rgba(255,255,255,0.45); }
   .theme-dark .past-exam-score { color:var(--gold); }
   .theme-dark .past-exam-meta { color:rgba(255,255,255,0.4); }
-  .theme-dark .pq-top { background:#0f1929; }
+  .theme-dark .pq-top { background:#001020; }
   .theme-dark .pq-scenario-tag { color:var(--gold); }
   .theme-dark .pq-counter { color:rgba(255,255,255,0.35); }
   .theme-dark .q-tag { background:rgba(255,255,255,0.07); color:#5a6a8a; }
@@ -609,10 +611,10 @@
   .theme-dark .exam-q-num { color:rgba(255,255,255,0.7); }
   .theme-dark .ob-check-text { color:rgba(255,255,255,0.8); }
   .theme-dark .result-score-lbl { color:#9aa5be; }
-  .theme-dark .res-mini-cell { background:#111827; border-color:rgba(255,255,255,0.08); }
+  .theme-dark .res-mini-cell { background:#001D34; border-color:rgba(255,255,255,0.08); }
   .theme-dark .res-mini-cell div { color:#5a6a8a; }
   .theme-dark .weak-areas-btn { background:#1f5c39; }
-  .theme-dark .sec-start-btn { background:#1a2744; color:white; }
+  .theme-dark .sec-start-btn { background:#0a2d4a; color:white; }
   .theme-dark .home-nav-title { color:white; }
   .theme-dark .home-nav-desc { color:rgba(255,255,255,0.5); }
   .theme-dark .home-disclaimer { color:rgba(255,255,255,0.35); }
@@ -630,7 +632,7 @@
   /* Scenario chip disabled - Online Practice v1 */
   .sec-chip-disabled { opacity: 0.42; cursor: not-allowed !important; pointer-events: none; }
   .sec-chip-disabled:hover { transform: none !important; box-shadow: none !important; }
-  .sec-chip-badge { display: inline-block; margin-top: 5px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(201,168,76,0.12); color: #C9A84C; border: 1px solid rgba(201,168,76,0.25); border-radius: 4px; padding: 2px 6px; }
+  .sec-chip-badge { display: inline-block; margin-top: 5px; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(236,92,59,0.12); color: #EC5C3B; border: 1px solid rgba(236,92,59,0.25); border-radius: 4px; padding: 2px 6px; }
 
 </style>
 </head>
@@ -654,15 +656,35 @@
     <!-- HOME TAB                          -->
     <!-- ══════════════════════════════════ -->
     <div class="tab-panel active" id="panel-home">
-      <div class="home-logo-ring">
-        <svg width="28" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-          <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+      <div class="home-logo-ring" onclick="openNathanMode()" style="cursor:pointer;" title="Nathan Mode">
+        <svg width="30" height="30" viewBox="0 0 100 100">
+          <g transform="translate(50,50)">
+            <circle r="17" fill="none" stroke="#EC5C3B" stroke-width="5"/>
+            <g stroke="#EC5C3B" stroke-width="3.5" stroke-linecap="round">
+              <line x1="0" y1="-25" x2="0" y2="-35"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(25)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(50)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(75)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(100)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(125)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(150)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(175)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(200)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(225)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(250)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(275)"/>
+              <line x1="0" y1="-25" x2="0" y2="-35" transform="rotate(300)"/>
+            </g>
+          </g>
         </svg>
       </div>
       <div style="width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
         <div style="width:36px;"></div>
-        <div class="home-title" style="margin-bottom:0;text-align:center;flex:1;">Financial Adviser<br>Exam Questions</div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="font-family:'Source Serif 4',serif;font-size:13px;font-weight:600;color:white;letter-spacing:0.12em;text-transform:uppercase;opacity:0.55;margin-bottom:1px;">clime</div>
+          <div class="home-title" style="margin-bottom:0;text-align:center;flex:1;">Financial Adviser<br>Exam Trainer</div>
+          <div style="width:40px;height:2px;background:#EC5C3B;border-radius:99px;margin-top:4px;"></div>
+        </div>
         <button class="settings-cog" onclick="openSettings()" aria-label="Settings" style="margin-top:4px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"/>
@@ -705,7 +727,7 @@
 
         <div class="home-nav-card" onclick="switchTab('practice')" style="border-left:3px solid #1D9E75;">
           <div class="home-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
           <div class="home-nav-info">
             <div class="home-nav-title">Practice Questions</div>
@@ -716,7 +738,7 @@
 
         <div class="home-nav-card" onclick="switchTab('exam')" style="border-left:3px solid #d4890a;">
           <div class="home-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <div class="home-nav-info">
             <div class="home-nav-title">Timed Practice Exam</div>
@@ -727,7 +749,7 @@
 
         <div class="home-nav-card" onclick="switchTab('sections')" style="border-left:3px solid #534AB7;">
           <div class="home-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           </div>
           <div class="home-nav-info">
             <div class="home-nav-title">Practice by Section</div>
@@ -738,7 +760,7 @@
 
         <div class="home-nav-card" onclick="switchTab('resources')" style="border-left:3px solid #185FA5;">
           <div class="home-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
           </div>
           <div class="home-nav-info">
             <div class="home-nav-title">Resource List to Learn</div>
@@ -750,7 +772,7 @@
       </div>
 
       <div class="past-exams-section" id="past-exams-container" style="display:none !important;"></div>
-      <div id="home-q-count" style="font-size:16px;color:var(--gold);text-align:center;letter-spacing:0.04em;font-weight:600;"></div>
+      <div id="home-q-count" style="font-size:11px;color:rgba(255,255,255,0.35);text-align:center;letter-spacing:0.04em;font-weight:500;"></div>
       <div class="home-disclaimer">Independent study tool — not affiliated with ASIC, ACER or any official examining body</div>
     </div>
 <!-- ══════════════════════════════════ -->
@@ -932,7 +954,7 @@
           <!-- Warn box -->
           <div class="warn-box" style="margin-bottom:0;font-size:12px;flex-shrink:0;justify-content:center;text-align:center;">
             <div>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>No answer feedback during exam mode.<br>Full results revealed at the end.
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#EC5C3B" stroke-width="2" stroke-linecap="round" style="vertical-align:middle;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>No answer feedback during exam mode.<br>Full results revealed at the end.
             </div>
           </div>
 
@@ -948,7 +970,7 @@
         <div class="ob-dialog">
           <div class="ob-top">
             <div class="ob-icon-wrap">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8c97a" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f07d61" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
             </div>
             <div class="ob-title">Open Book Exam</div>
             <div class="ob-subtitle">Before you begin — a quick reminder</div>
@@ -969,7 +991,7 @@
                 <div class="ob-check-text">Other key legislation &amp; ASIC guides ready</div>
               </div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:12px;margin-bottom:16px;"><svg style="flex-shrink:0;margin-top:1px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;"><strong style="color:var(--gold);">Tip:</strong> All key resources are linked in the <strong style="color:var(--gold);white-space:nowrap;">Resource List</strong> tab — tap the book icon in the bottom-right corner before you start.</div></div><button class="ob-btn" onclick="confirmOpenBook()">I'm ready — begin exam</button>
+            <div style="display:flex;align-items:flex-start;gap:9px;background:rgba(236,92,59,0.10);border:1px solid rgba(236,92,59,0.35);border-radius:10px;padding:12px;margin-bottom:16px;"><svg style="flex-shrink:0;margin-top:1px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EC5C3B" stroke-width="2.2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.55;"><strong style="color:var(--gold);">Tip:</strong> All key resources are linked in the <strong style="color:var(--gold);white-space:nowrap;">Resource List</strong> tab — tap the book icon in the bottom-right corner before you start.</div></div><button class="ob-btn" onclick="confirmOpenBook()">I'm ready — begin exam</button>
           </div>
         </div>
       </div>
@@ -1020,7 +1042,7 @@
         <div class="exam-exit-overlay" id="exam-exit-overlay">
           <div class="exam-exit-dialog">
             <div class="exam-exit-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#EC5C3B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
             </div>
             <div class="exam-exit-title">Exit exam?</div>
             <div class="exam-exit-msg">Are you sure you want to exit? Your progress cannot be saved and the exam will end.</div>
@@ -1090,8 +1112,8 @@
       <div class="screen-header">
         <div class="screen-title">Practice by Section</div>
         <div style="margin-top:6px;display:flex;align-items:flex-start;gap:10px;">
-          <div style="width:28px;height:28px;border-radius:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <div style="width:28px;height:28px;border-radius:8px;background:rgba(236,92,59,0.15);border:1px solid rgba(236,92,59,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EC5C3B" stroke-width="2.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </div>
           <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.55;">
             Tap <span style="text-decoration:underline;text-underline-offset:3px;">one or more</span> topics to select them, then press <span style="color:white;font-weight:600;">Start</span> at the bottom to begin a focused practice session.
@@ -1101,7 +1123,7 @@
       <div style="padding:16px;padding-bottom:100px;">
         <div class="sec-label">Ethics &amp; professional standards</div>
         <div class="sec-chip" onclick="togSec(this)" data-section="Ethics &amp; Code of Ethics" style="border-left:3px solid #534AB7;">
-          <div class="s-icon" style="background:#eef1f7;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="s-icon" style="background:#eef1f7;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div class="s-info"><div class="s-name">Ethics &amp; Code of Ethics</div><div class="s-meta">Standards 1–12 · Conflicts · Consent · Integrity</div></div>
           <div class="s-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         </div>
@@ -1112,7 +1134,7 @@
         </div>
         <div class="sec-label" style="margin-top:14px;">Corporations Act</div>
         <div class="sec-chip" onclick="togSec(this)" data-section="Corporations Act" data-cat="law" style="border-left:3px solid #185FA5;">
-          <div class="s-icon" style="background:#e8f0fc;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3a8a" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
+          <div class="s-icon" style="background:#e8f0fc;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#001D34" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
           <div class="s-info"><div class="s-name">Corporations Act</div><div class="s-meta">Best Interests · SOA/FSG · DDO · Conflicted Remuneration</div></div>
           <div class="s-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         </div>
@@ -1139,13 +1161,13 @@
           <div class="s-info"><div class="s-name">Scope &amp; Licensing</div><div class="s-meta">AFSL · ACL · TASA · Independence · TPB registration</div></div>
           <div class="s-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         </div>
-        <div class="sec-chip" onclick="togSec(this)" data-section="True or False" style="border-left:3px solid #14203a;">
+        <div class="sec-chip" onclick="togSec(this)" data-section="True or False" style="border-left:3px solid #001D34;">
           <div class="s-icon" style="background:#eaf5ee;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2d7a4f" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
           <div class="s-info"><div class="s-name">True or False</div><div class="s-meta">134 statements across all exam topics</div></div>
           <div class="s-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         </div>
-        <div class="sec-chip" onclick="togSec(this)" data-section="Scenario Questions" data-cat="scenario" style="border-left:3px solid #C9A84C;">
-          <div class="s-icon" style="background:#e8f0fc;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a3a8a" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="sec-chip" onclick="togSec(this)" data-section="Scenario Questions" data-cat="scenario" style="border-left:3px solid #EC5C3B;">
+          <div class="s-icon" style="background:#e8f0fc;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#001D34" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
           <div class="s-info"><div class="s-name">Scenario Questions</div><div class="s-meta">49 scenarios · 260 questions · Applied ethics &amp; law</div></div>
           <div class="s-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         </div>
@@ -1172,8 +1194,8 @@
         <div class="sec-label">Legislation</div>
         <a href="https://www.legislation.gov.au/C2004A00818" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
         <div class="res-card" style="cursor:pointer;border-left:3px solid #185FA5;">
-          <div class="r-icon" style="background:#e8f0fc;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a3a8a" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
-          <div style="flex:1;"><div class="r-cat" style="color:#1a3a8a;">Primary legislation</div><div class="r-title">Corporations Act 2001 (Cth)</div><div class="r-desc">Chapter 7 — s911A, s912A, s946A, s961B, s947B, s1041H, Part 7.7A and Part 7.8A (DDO).</div></div>
+          <div class="r-icon" style="background:#e8f0fc;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#001D34" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
+          <div style="flex:1;"><div class="r-cat" style="color:#001D34;">Primary legislation</div><div class="r-title">Corporations Act 2001 (Cth)</div><div class="r-desc">Chapter 7 — s911A, s912A, s946A, s961B, s947B, s1041H, Part 7.7A and Part 7.8A (DDO).</div></div>
           <div style="margin-left:8px;align-self:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
         </div>
         </a>
@@ -1207,9 +1229,9 @@
         </a>
         <div class="sec-label" style="margin-top:16px;">Regulatory guidance</div>
         <a href="https://asic.gov.au/regulatory-resources/find-a-document/regulatory-guides/" target="_blank" rel="noopener" style="text-decoration:none;display:block;">
-        <div class="res-card" style="cursor:pointer;border-left:3px solid #14203a;">
-          <div class="r-icon" style="background:#eef1f7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
-          <div style="flex:1;"><div class="r-cat" style="color:#1a2744;">ASIC guidance</div><div class="r-title">ASIC Regulatory Guides</div><div class="r-desc">RG 104 (Licensing), RG 175 (Financial product advisers), RG 244 (Scaled advice), RG 271 (Dispute resolution).</div></div>
+        <div class="res-card" style="cursor:pointer;border-left:3px solid #001D34;">
+          <div class="r-icon" style="background:#eef1f7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a2d4a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+          <div style="flex:1;"><div class="r-cat" style="color:#0a2d4a;">ASIC guidance</div><div class="r-title">ASIC Regulatory Guides</div><div class="r-desc">RG 104 (Licensing), RG 175 (Financial product advisers), RG 244 (Scaled advice), RG 271 (Dispute resolution).</div></div>
           <div style="margin-left:8px;align-self:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
         </div>
         </a>
@@ -1352,7 +1374,7 @@
 
         <!-- Back button pinned to bottom -->
         <div style="padding:12px 20px 28px;background:var(--off-white);border-top:0.5px solid var(--border);flex-shrink:0;">
-          <button onclick="closeSettings()" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;color:var(--text-primary);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:0;">
+          <button onclick="closeSettings()" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;color:var(--text-primary);font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;padding:0;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
             Back
           </button>
@@ -1364,12 +1386,12 @@
     <!-- List view -->
     <div id="past-exams-list-view" style="display:flex;flex-direction:column;height:100%;">
       <div style="background:var(--navy);padding:12px 16px;flex-shrink:0;">
-        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:white;margin-top:4px;">Previous Exams</div>
+        <div style="font-family:'Source Serif 4',serif;font-size:19px;color:white;margin-top:4px;">Previous Exams</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;" id="past-exams-count">No saved exams yet</div>
       </div>
       <div style="flex:1;overflow-y:auto;padding:16px 14px 20px;" id="past-exams-page-list"></div>
       <div style="padding:16px 20px 28px;background:var(--navy);border-top:0.5px solid rgba(255,255,255,0.08);flex-shrink:0;">
-        <button onclick="closePastExams()" style="background:none;border:none;cursor:pointer;color:white;display:flex;align-items:center;gap:7px;padding:0;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;">
+        <button onclick="closePastExams()" style="background:none;border:none;cursor:pointer;color:white;display:flex;align-items:center;gap:7px;padding:0;font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
           Back
         </button>
@@ -1378,12 +1400,12 @@
     <!-- Detail: one-at-a-time answer review -->
     <div id="past-exam-detail" style="display:none;position:absolute;inset:0;z-index:10;flex-direction:column;background:var(--off-white);overflow:hidden;">
       <div style="background:var(--navy);padding:12px 16px;flex-shrink:0;">
-        <button onclick="closePastExamDetail()" style="background:none;border:none;cursor:pointer;color:white;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:8px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;opacity:0.8;">
+        <button onclick="closePastExamDetail()" style="background:none;border:none;cursor:pointer;color:white;display:flex;align-items:center;gap:6px;padding:0;margin-bottom:8px;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:600;opacity:0.8;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
           Back
         </button>
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <div style="font-family:'DM Serif Display',serif;font-size:19px;color:white;">Answer Review</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:19px;color:white;">Answer Review</div>
           <span style="font-size:12px;font-weight:700;" id="prd-status"></span>
         </div>
         <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;" id="prd-meta"></div>
@@ -1552,7 +1574,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v164';
+    const APP_VERSION = 'v165';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -2791,7 +2813,7 @@
     const skipRow = !isAns ?
       '<div class="q-btn-row" style="margin-top:12px;">' +
         '<button class="btn-prev-q" onclick="pNav(-1)" style="visibility:' + (pIdx > 0 ? 'visible' : 'hidden') + '">← Previous</button>' +
-        '<button class="btn-prev-q" style="box-shadow:0 4px 14px rgba(20,32,58,0.1),inset 0 1px 0 rgba(255,255,255,0.9);" onclick="pSkip()">Skip →</button>' +
+        '<button class="btn-prev-q" style="box-shadow:0 4px 14px rgba(0,29,52,0.1),inset 0 1px 0 rgba(255,255,255,0.9);" onclick="pSkip()">Skip →</button>' +
       '</div>' : '';
 
     // Scenario narrative box (shown in question card for rich RS-type scenarios)
@@ -3541,7 +3563,7 @@
   }
 
   function spawnConfetti(parent, count) {
-    const colours = ['#C9A84C','#2d8a56','#4a9de0','#e8c97a','#6bcaff','#ff9f43','#ff6b6b'];
+    const colours = ['#EC5C3B','#2d8a56','#4a9de0','#f07d61','#6bcaff','#ff9f43','#ff6b6b'];
     for (let i = 0; i < count; i++) {
       setTimeout(() => {
         const el = document.createElement('div');
