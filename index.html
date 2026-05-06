@@ -1554,7 +1554,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v169';
+    const APP_VERSION = 'v170';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3191,6 +3191,7 @@
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
+  const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const TABS = {
     standard:        '788562758',
     truefalse:       '1336910744',
@@ -3203,7 +3204,7 @@
   };
 
   function sheetUrl(gid) {
-    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv&gid=${gid}`;
+    return `https://docs.google.com/spreadsheets/d/e/${PUB_KEY}/pub?output=csv&gid=${gid}`;
   }
 
   function parseCSV(text) {
@@ -3394,8 +3395,7 @@
     return qs;
   }
 
-  async function fetchTabSafe(gid) {
-    // Returns parsed rows on success, null on any failure — never throws
+  async function fetchTab(gid) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
     try {
@@ -3403,16 +3403,15 @@
       clearTimeout(timer);
       if (!resp.ok) { console.warn('[FASEA] GID', gid, 'HTTP', resp.status, '- skipping'); return null; }
       const text = await resp.text();
-      if (text.includes('ServiceLogin') || text.length < 50) { console.warn('[FASEA] GID', gid, 'got login redirect - skipping'); return null; }
+      if (text.includes('ServiceLogin') || text.length < 50) { console.warn('[FASEA] GID', gid, 'login redirect - skipping'); return null; }
       console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows');
       return parseCSV(text);
     } catch(e) {
       clearTimeout(timer);
-      console.warn('[FASEA] GID', gid, 'failed:', e.message, '- skipping');
+      console.warn('[FASEA] GID', gid, 'error:', e.message, '- skipping');
       return null;
     }
   }
-  async function fetchTab(gid) { return fetchTabSafe(gid); }
 
   async function loadLiveQuestions() {
     try {
@@ -3427,7 +3426,6 @@
         fetchTab(TABS.scenarioA)
       ]);
 
-      // Each parse call skips gracefully if rows is null
       const live = [
         ...(stdRows ? parseStandardTab(stdRows) : []),
         ...(tfRows ? parseTrueFalseTab(tfRows) : []),
