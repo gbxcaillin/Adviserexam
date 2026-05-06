@@ -1554,7 +1554,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v166';
+    const APP_VERSION = 'v167';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3203,7 +3203,7 @@
   };
 
   function sheetUrl(gid) {
-    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
+    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv&gid=${gid}`;
   }
 
   function parseCSV(text) {
@@ -3432,6 +3432,7 @@
       } else {
       }
     } catch(e) {
+      console.warn('[FASEA] Live question fetch failed:', e.message);
     }
   }
 
