@@ -1554,7 +1554,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v168';
+    const APP_VERSION = 'v169';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3205,9 +3205,6 @@
   function sheetUrl(gid) {
     return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv&gid=${gid}`;
   }
-  function sheetUrlExport(gid) {
-    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
-  }
 
   function parseCSV(text) {
     const rows = [];
@@ -3397,35 +3394,25 @@
     return qs;
   }
 
-  async function fetchTab(gid) {
-    // Try /pub URL first (works when sheet is published), fallback to /export
-    const urls = [sheetUrl(gid), sheetUrlExport(gid)];
-    let lastErr;
-    for (const url of urls) {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 8000);
-      try {
-        console.log('[FASEA] Trying:', url);
-        const resp = await fetch(url, { signal: controller.signal });
-        clearTimeout(timer);
-        if (!resp.ok) { console.warn('[FASEA] HTTP', resp.status, 'for', url); lastErr = new Error('HTTP ' + resp.status); continue; }
-        const text = await resp.text();
-        // Google redirects to login HTML when not published - detect this
-        if (text.includes('accounts.google.com') || text.includes('ServiceLogin') || text.length < 50) {
-          console.warn('[FASEA] Got login redirect for GID', gid, '- trying next URL');
-          lastErr = new Error('login redirect');
-          continue;
-        }
-        console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows');
-        return parseCSV(text);
-      } catch(e) {
-        clearTimeout(timer);
-        console.warn('[FASEA] fetch error for GID', gid, ':', e.message);
-        lastErr = e;
-      }
+  async function fetchTabSafe(gid) {
+    // Returns parsed rows on success, null on any failure — never throws
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    try {
+      const resp = await fetch(sheetUrl(gid), { signal: controller.signal });
+      clearTimeout(timer);
+      if (!resp.ok) { console.warn('[FASEA] GID', gid, 'HTTP', resp.status, '- skipping'); return null; }
+      const text = await resp.text();
+      if (text.includes('ServiceLogin') || text.length < 50) { console.warn('[FASEA] GID', gid, 'got login redirect - skipping'); return null; }
+      console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows');
+      return parseCSV(text);
+    } catch(e) {
+      clearTimeout(timer);
+      console.warn('[FASEA] GID', gid, 'failed:', e.message, '- skipping');
+      return null;
     }
-    throw lastErr || new Error('all URLs failed for GID ' + gid);
   }
+  async function fetchTab(gid) { return fetchTabSafe(gid); }
 
   async function loadLiveQuestions() {
     try {
@@ -3440,19 +3427,22 @@
         fetchTab(TABS.scenarioA)
       ]);
 
+      // Each parse call skips gracefully if rows is null
       const live = [
-        ...parseStandardTab(stdRows),
-        ...parseTrueFalseTab(tfRows),
-        ...parseSecondaryValuesTab(svRows),
-        ...parseValuesTab(valRows),
-        ...parseAppliedTab(appRows),
-        ...parseComplexTab(cxRows),
-        ...parseScenarioTabs(sqRows, saRows)
+        ...(stdRows ? parseStandardTab(stdRows) : []),
+        ...(tfRows ? parseTrueFalseTab(tfRows) : []),
+        ...(svRows ? parseSecondaryValuesTab(svRows) : []),
+        ...(valRows ? parseValuesTab(valRows) : []),
+        ...(appRows ? parseAppliedTab(appRows) : []),
+        ...(cxRows ? parseComplexTab(cxRows) : []),
+        ...((sqRows && saRows) ? parseScenarioTabs(sqRows, saRows) : [])
       ].filter(q => q.q && q.opts && q.opts.some(o => o));
 
+      console.log('[FASEA] Loaded', live.length, 'live questions');
       if (live.length > 50) {
         ALL_QUESTIONS = live;
       } else {
+        console.warn('[FASEA] Live bank too small, keeping fallback');
       }
     } catch(e) {
       console.error('[FASEA] loadLiveQuestions failed:', e.message);
