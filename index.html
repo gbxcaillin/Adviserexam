@@ -1554,7 +1554,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v167';
+    const APP_VERSION = 'v168';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3395,16 +3395,22 @@
   }
 
   async function fetchTab(gid) {
+    const url = sheetUrl(gid);
+    console.log('[FASEA] Fetching GID', gid, '->', url);
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
     let resp;
-    try { resp = await fetch(sheetUrl(gid), { signal: controller.signal }); }
+    try { resp = await fetch(url, { signal: controller.signal }); }
+    catch(fetchErr) { clearTimeout(timer); console.error('[FASEA] fetch() threw for GID', gid, ':', fetchErr.message); throw fetchErr; }
     finally { clearTimeout(timer); }
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    return parseCSV(await resp.text());
+    if (!resp.ok) { console.error('[FASEA] HTTP', resp.status, 'for GID', gid, '-', resp.url); throw new Error('HTTP ' + resp.status); }
+    const text = await resp.text();
+    console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows,', text.length, 'chars. First 120:', text.slice(0,120));
+    return parseCSV(text);
   }
 
   async function loadLiveQuestions() {
+    console.log('[FASEA] loadLiveQuestions() start - sheet ID:', SHEET_ID);
     try {
       const [stdRows, tfRows, svRows, valRows, appRows, cxRows, sqRows, saRows] = await Promise.all([
         fetchTab(TABS.standard),
@@ -3427,12 +3433,15 @@
         ...parseScenarioTabs(sqRows, saRows)
       ].filter(q => q.q && q.opts && q.opts.some(o => o));
 
+      console.log('[FASEA] Parsed', live.length, 'live questions total');
       if (live.length > 50) {
         ALL_QUESTIONS = live;
+        console.log('[FASEA] ALL_QUESTIONS replaced with live bank (' + live.length + ')');
       } else {
+        console.warn('[FASEA] Live bank too small (' + live.length + '), keeping hardcoded fallback');
       }
     } catch(e) {
-      console.warn('[FASEA] Live question fetch failed:', e.message);
+      console.error('[FASEA] loadLiveQuestions() failed:', e.message);
     }
   }
 
