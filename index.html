@@ -3205,6 +3205,9 @@
   function sheetUrl(gid) {
     return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv&gid=${gid}`;
   }
+  function sheetUrlExport(gid) {
+    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
+  }
 
   function parseCSV(text) {
     const rows = [];
@@ -3395,22 +3398,36 @@
   }
 
   async function fetchTab(gid) {
-    const url = sheetUrl(gid);
-    console.log('[FASEA] Fetching GID', gid, '->', url);
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-    let resp;
-    try { resp = await fetch(url, { signal: controller.signal }); }
-    catch(fetchErr) { clearTimeout(timer); console.error('[FASEA] fetch() threw for GID', gid, ':', fetchErr.message); throw fetchErr; }
-    finally { clearTimeout(timer); }
-    if (!resp.ok) { console.error('[FASEA] HTTP', resp.status, 'for GID', gid, '-', resp.url); throw new Error('HTTP ' + resp.status); }
-    const text = await resp.text();
-    console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows,', text.length, 'chars. First 120:', text.slice(0,120));
-    return parseCSV(text);
+    // Try /pub URL first (works when sheet is published), fallback to /export
+    const urls = [sheetUrl(gid), sheetUrlExport(gid)];
+    let lastErr;
+    for (const url of urls) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      try {
+        console.log('[FASEA] Trying:', url);
+        const resp = await fetch(url, { signal: controller.signal });
+        clearTimeout(timer);
+        if (!resp.ok) { console.warn('[FASEA] HTTP', resp.status, 'for', url); lastErr = new Error('HTTP ' + resp.status); continue; }
+        const text = await resp.text();
+        // Google redirects to login HTML when not published - detect this
+        if (text.includes('accounts.google.com') || text.includes('ServiceLogin') || text.length < 50) {
+          console.warn('[FASEA] Got login redirect for GID', gid, '- trying next URL');
+          lastErr = new Error('login redirect');
+          continue;
+        }
+        console.log('[FASEA] GID', gid, 'OK -', text.split('\n').length, 'rows');
+        return parseCSV(text);
+      } catch(e) {
+        clearTimeout(timer);
+        console.warn('[FASEA] fetch error for GID', gid, ':', e.message);
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('all URLs failed for GID ' + gid);
   }
 
   async function loadLiveQuestions() {
-    console.log('[FASEA] loadLiveQuestions() start - sheet ID:', SHEET_ID);
     try {
       const [stdRows, tfRows, svRows, valRows, appRows, cxRows, sqRows, saRows] = await Promise.all([
         fetchTab(TABS.standard),
@@ -3433,15 +3450,12 @@
         ...parseScenarioTabs(sqRows, saRows)
       ].filter(q => q.q && q.opts && q.opts.some(o => o));
 
-      console.log('[FASEA] Parsed', live.length, 'live questions total');
       if (live.length > 50) {
         ALL_QUESTIONS = live;
-        console.log('[FASEA] ALL_QUESTIONS replaced with live bank (' + live.length + ')');
       } else {
-        console.warn('[FASEA] Live bank too small (' + live.length + '), keeping hardcoded fallback');
       }
     } catch(e) {
-      console.error('[FASEA] loadLiveQuestions() failed:', e.message);
+      console.error('[FASEA] loadLiveQuestions failed:', e.message);
     }
   }
 
