@@ -1571,7 +1571,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v177';
+    const APP_VERSION = 'v178';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3210,7 +3210,7 @@
     // Restore text size preference
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
-  var APP_VERSION = 'v177';
+  var APP_VERSION = 'v178';
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
   const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const SHEET_TABS = {
@@ -3318,21 +3318,23 @@
   }
 
   function parseValuesTab(rows) {
+    // # Section Pool Type Question OptA OptB OptC OptD CorrectLetter CorrectAnswer Explanation
+    // 0  1      2    3    4        5    6    7    8    9             10            11
     const qs = [];
     let idBase = 93000;
     for (let i = 1; i < rows.length; i++) {
       const r = rows[i];
-      if (!r[3] || r[3].trim() === '') continue;
+      if (!r[4] || r[4].trim() === '') continue;
       qs.push({
         id: idBase++,
         section: (r[1]||'Code Values').trim(),
         pool: 'Values',
-        type: 'Values',
-        q: (r[3]||'').trim(),
-        opts: [(r[4]||'').trim(),(r[5]||'').trim(),(r[6]||'').trim(),(r[7]||'').trim()],
-        correct: correctIndex((r[8]||'A').trim()),
+        type: (r[3]||'Values').trim(),
+        q: (r[4]||'').trim(),
+        opts: [(r[5]||'').trim(),(r[6]||'').trim(),(r[7]||'').trim(),(r[8]||'').trim()],
+        correct: correctIndex((r[9]||'A').trim()),
         topic: (r[1]||'Code Values').trim(),
-        expl: (r[10]||'').trim()
+        expl: (r[11]||'').trim()
       });
     }
     return qs;
@@ -3427,7 +3429,7 @@
 
   async function loadLiveQuestions() {
     try {
-      const [stdRows, tfRows, svRows, valRows, appRows, cxRows, scRows] = await Promise.all([
+      const [stdRows, tfRows, svRows, valRows, appRows, cxRows, sqRows, saRows] = await Promise.all([
         fetchTab(SHEET_TABS.standard),
         fetchTab(SHEET_TABS.truefalse),
         fetchTab(SHEET_TABS.secondaryvalues),
@@ -3438,23 +3440,20 @@
       ]);
 
       const live = [
-        ...(stdRows ? parseStandardTab(stdRows) : []),
-        ...(tfRows ? parseTrueFalseTab(tfRows) : []),
-        ...(svRows ? parseSecondaryValuesTab(svRows) : []),
-        ...(valRows ? parseValuesTab(valRows) : []),
-        ...(appRows ? parseAppliedTab(appRows) : []),
-        ...(cxRows ? parseComplexTab(cxRows) : []),
-        ...(scRows ? parseScenarioTabs(scRows) : [])
+        ...parseStandardTab(stdRows),
+        ...parseTrueFalseTab(tfRows),
+        ...parseSecondaryValuesTab(svRows),
+        ...parseValuesTab(valRows),
+        ...parseAppliedTab(appRows),
+        ...parseComplexTab(cxRows),
+        ...parseScenarioTabs(sqRows, saRows)
       ].filter(q => q.q && q.opts && q.opts.some(o => o));
 
-      console.log('[FASEA] Loaded', live.length, 'live questions');
       if (live.length > 50) {
         ALL_QUESTIONS = live;
       } else {
-        console.warn('[FASEA] Live bank too small, keeping fallback');
       }
     } catch(e) {
-      console.error('[FASEA] loadLiveQuestions failed:', e.message);
     }
   }
 
