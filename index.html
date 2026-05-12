@@ -1571,7 +1571,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v179';
+    const APP_VERSION = 'v181';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -1780,6 +1780,7 @@
   let saveExam = false;
   let savedExams = [];
   let currentExamData = null;
+  let lastWeakTopics = [];
 
   function setSaveExam(val) {
     saveExam = val;
@@ -2068,9 +2069,41 @@
   }
 
   function buildExamQuestions(count) {
-    const examMap = { 20: 'short', 40: 'medium', 80: 'full' };
-    const key = examMap[count] || 'short';
-    return PRE_BUILT_EXAMS[key] || PRE_BUILT_EXAMS.short;
+    // How many complete scenario groups to include per exam size
+    // rapid=10: 1 scenario, short=20: 2, medium=40: 3, full=80: 4
+    const scenarioCountMap = { 10: 1, 20: 2, 40: 3, 80: 4 };
+    const scenariosNeeded = scenarioCountMap[count] || 1;
+
+    // Group all live scenario questions by scenario_key
+    const allScenarios = ALL_QUESTIONS.filter(q => q.pool === 'Scenario');
+    const groupMap = new Map();
+    allScenarios.forEach(q => {
+      const key = q.scenario_key || q.topic || 'unknown';
+      if (!groupMap.has(key)) groupMap.set(key, []);
+      groupMap.get(key).push(q);
+    });
+
+    // Shuffle the groups and pick the required number
+    const allGroups = shuffle([...groupMap.values()]);
+    const pickedGroups = allGroups.slice(0, scenariosNeeded);
+    const scenarioQs = pickedGroups.reduce((acc, g) => acc.concat(g), []);
+
+    // Fill remaining slots with shuffled non-scenario questions
+    const regular = shuffle(ALL_QUESTIONS.filter(q => q.pool !== 'Scenario'));
+    const remaining = Math.max(0, count - scenarioQs.length);
+    const regularQs = regular.slice(0, remaining);
+
+    // Interleave: place each scenario group at evenly-spaced positions
+    const result = [...regularQs];
+    if (pickedGroups.length === 0) return result;
+
+    const spacing = Math.max(3, Math.floor(regularQs.length / (pickedGroups.length + 1)));
+    for (let i = pickedGroups.length - 1; i >= 0; i--) {
+      const insertAt = Math.min(result.length, (i + 1) * spacing);
+      result.splice(insertAt, 0, ...pickedGroups[i]);
+    }
+
+    return result;
   }
   // Break scenario text into readable paragraphs at natural sentence boundaries
   function formatScenario(text) {
@@ -2278,6 +2311,7 @@
     // Always update stats and daily progress — save toggle only controls exam history
     updateDailyProgress(correct);
     updateHomeStats(pct);
+    lastWeakTopics = weakTopics;
 
     if (saveExam) {
       currentExamData = {
@@ -2438,16 +2472,16 @@
   
 
   function practiceWeakAreas() {
-    if (!currentExamData || !currentExamData.weakTopics || !currentExamData.weakTopics.length) return;
+    const topics = (currentExamData && currentExamData.weakTopics && currentExamData.weakTopics.length)
+      ? currentExamData.weakTopics
+      : lastWeakTopics;
+    if (!topics || !topics.length) return;
 
     switchTab('sections');
 
     setTimeout(() => {
-      // Clear all existing selections
       document.querySelectorAll('.sec-chip').forEach(c => c.classList.remove('sel'));
-
-      // Get all weak topic names (lowercase)
-      const weakNames = currentExamData.weakTopics.map(t => t.name.toLowerCase());
+      const weakNames = topics.map(t => t.name.toLowerCase());
 
       // Match each chip to weak topics by comparing data-section or chip name text
       document.querySelectorAll('.sec-chip').forEach(chip => {
@@ -3104,6 +3138,7 @@
     // Always update stats and daily progress — save toggle only controls exam history
     updateDailyProgress(correct);
     updateHomeStats(pct);
+    lastWeakTopics = weak.map(t => ({name: t.name, wrong: t.wrong, total: t.total}));
 
     if (saveExam) {
       currentExamData = { date: new Date(), pct, correct, incorrect, unanswered, time: timeStr, qty: questions.length, label: examLabel, questions, weakTopics: weak.map(t => ({name: t.name, wrong: t.wrong, total: t.total})) };
@@ -3210,7 +3245,7 @@
     // Restore text size preference
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
-  var APP_VERSION = 'v179';
+  var APP_VERSION = 'v181';
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
   const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const SHEET_TABS = {
@@ -3319,7 +3354,6 @@
 
   function parseValuesTab(rows) {
     // # Section Pool Type Question OptA OptB OptC OptD CorrectLetter CorrectAnswer Explanation
-    // 0  1      2    3    4        5    6    7    8    9             10            11
     const qs = [];
     let idBase = 93000;
     for (let i = 1; i < rows.length; i++) {
@@ -3342,7 +3376,6 @@
 
   function parseAppliedTab(rows) {
     // # Section Pool Type Question OptA OptB OptC OptD CorrectLetter CorrectAnswer Explanation
-    // 0  1      2    3    4        5    6    7    8    9             10            11
     const qs = [];
     let idBase = 94000;
     for (let i = 1; i < rows.length; i++) {
@@ -3385,26 +3418,34 @@
     return qs;
   }
 
-  function parseScenarioTabs(rows) {
+  function parseScenarioTabs(qRows, aRows) {
+    // Build scenario narrative lookup: key = Scenario name, value = narrative
+    const narratives = {};
+    for (let i = 1; i < qRows.length; i++) {
+      const r = qRows[i];
+      if (r[0] && r[1]) narratives[r[0].trim()] = r[1].trim();
+    }
+    // Parse scenario answers
     const qs = [];
     let idBase = 96000;
-    for (let i = 1; i < rows.length; i++) {
-      const r = rows[i];
-      if (!r[4] || r[4].trim() === '') continue;
+    for (let i = 1; i < aRows.length; i++) {
+      const r = aRows[i];
+      if (!r[2] || r[2].trim() === '') continue;
+      // #, ScenarioQ#, Question, OptA, OptB, OptC, OptD, CorrectLetter, CorrectAnswer, Explanation
       const scenarioKey = (r[1]||'').trim();
-      const narrative = (r[2]||'').trim();
+      const narrative = narratives[scenarioKey] || '';
       qs.push({
         id: idBase++,
         section: 'Scenario',
         pool: 'Scenario',
         type: 'Scenario',
-        q: (r[4]||'').trim(),
-        opts: [(r[5]||'').trim(),(r[6]||'').trim(),(r[7]||'').trim(),(r[8]||'').trim()],
-        correct: correctIndex((r[9]||'A').trim()),
+        q: (r[2]||'').trim(),
+        opts: [(r[3]||'').trim(),(r[4]||'').trim(),(r[5]||'').trim(),(r[6]||'').trim()],
+        correct: correctIndex((r[7]||'A').trim()),
         topic: scenarioKey,
         scenario: narrative,
         scenario_key: scenarioKey,
-        expl: (r[11]||'').trim()
+        expl: (r[9]||'').trim()
       });
     }
     return qs;
