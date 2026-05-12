@@ -1571,7 +1571,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v181';
+    const APP_VERSION = 'v182';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3245,7 +3245,7 @@
     // Restore text size preference
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
-  var APP_VERSION = 'v181';
+  var APP_VERSION = 'v182';
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
   const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const SHEET_TABS = {
@@ -3418,34 +3418,28 @@
     return qs;
   }
 
-  function parseScenarioTabs(qRows, aRows) {
-    // Build scenario narrative lookup: key = Scenario name, value = narrative
-    const narratives = {};
-    for (let i = 1; i < qRows.length; i++) {
-      const r = qRows[i];
-      if (r[0] && r[1]) narratives[r[0].trim()] = r[1].trim();
-    }
-    // Parse scenario answers
+  function parseScenarioTabs(rows) {
+    // Combined Scenarios tab: # Scenario Narrative Q# Question OptA OptB OptC OptD CorrectLetter CorrectAnswer Explanation
+    // cols:                    0  1        2         3  4        5    6    7    8    9             10            11
     const qs = [];
     let idBase = 96000;
-    for (let i = 1; i < aRows.length; i++) {
-      const r = aRows[i];
-      if (!r[2] || r[2].trim() === '') continue;
-      // #, ScenarioQ#, Question, OptA, OptB, OptC, OptD, CorrectLetter, CorrectAnswer, Explanation
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      if (!r[4] || r[4].trim() === '') continue;
       const scenarioKey = (r[1]||'').trim();
-      const narrative = narratives[scenarioKey] || '';
+      const narrative = (r[2]||'').trim();
       qs.push({
         id: idBase++,
         section: 'Scenario',
         pool: 'Scenario',
         type: 'Scenario',
-        q: (r[2]||'').trim(),
-        opts: [(r[3]||'').trim(),(r[4]||'').trim(),(r[5]||'').trim(),(r[6]||'').trim()],
-        correct: correctIndex((r[7]||'A').trim()),
+        q: (r[4]||'').trim(),
+        opts: [(r[5]||'').trim(),(r[6]||'').trim(),(r[7]||'').trim(),(r[8]||'').trim()],
+        correct: correctIndex((r[9]||'A').trim()),
         topic: scenarioKey,
         scenario: narrative,
         scenario_key: scenarioKey,
-        expl: (r[9]||'').trim()
+        expl: (r[11]||'').trim()
       });
     }
     return qs;
