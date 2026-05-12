@@ -3471,7 +3471,7 @@
 
   async function loadLiveQuestions() {
     try {
-      const [stdRows, tfRows, svRows, valRows, appRows, cxRows, sqRows, saRows] = await Promise.all([
+      const [stdRows, tfRows, svRows, valRows, appRows, cxRows, scRows] = await Promise.all([
         fetchTab(SHEET_TABS.standard),
         fetchTab(SHEET_TABS.truefalse),
         fetchTab(SHEET_TABS.secondaryvalues),
@@ -3482,20 +3482,24 @@
       ]);
 
       const live = [
-        ...parseStandardTab(stdRows),
-        ...parseTrueFalseTab(tfRows),
-        ...parseSecondaryValuesTab(svRows),
-        ...parseValuesTab(valRows),
-        ...parseAppliedTab(appRows),
-        ...parseComplexTab(cxRows),
-        ...parseScenarioTabs(sqRows, saRows)
+        ...(stdRows ? parseStandardTab(stdRows) : []),
+        ...(tfRows ? parseTrueFalseTab(tfRows) : []),
+        ...(svRows ? parseSecondaryValuesTab(svRows) : []),
+        ...(valRows ? parseValuesTab(valRows) : []),
+        ...(appRows ? parseAppliedTab(appRows) : []),
+        ...(cxRows ? parseComplexTab(cxRows) : []),
+        ...(scRows ? parseScenarioTabs(scRows) : [])
       ].filter(q => q.q && q.opts && q.opts.some(o => o));
 
+      console.log('[FASEA] Loaded', live.length, 'live questions');
       if (live.length > 50) {
         ALL_QUESTIONS = live;
+        console.log('[FASEA] ALL_QUESTIONS replaced with live bank');
       } else {
+        console.warn('[FASEA] Live bank too small, keeping fallback');
       }
     } catch(e) {
+      console.error('[FASEA] loadLiveQuestions failed:', e.message);
     }
   }
 
