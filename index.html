@@ -1571,7 +1571,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v178';
+    const APP_VERSION = 'v179';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -3210,7 +3210,7 @@
     // Restore text size preference
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
-  var APP_VERSION = 'v178';
+  var APP_VERSION = 'v179';
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
   const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const SHEET_TABS = {
@@ -3341,22 +3341,23 @@
   }
 
   function parseAppliedTab(rows) {
+    // # Section Pool Type Question OptA OptB OptC OptD CorrectLetter CorrectAnswer Explanation
+    // 0  1      2    3    4        5    6    7    8    9             10            11
     const qs = [];
     let idBase = 94000;
     for (let i = 1; i < rows.length; i++) {
       const r = rows[i];
       if (!r[4] || r[4].trim() === '') continue;
-      // #, Section, Pool, Type, Question, OptA, OptB, OptC, OptD, CorrectLetter, Explanation (no Correct Answer col)
       qs.push({
         id: idBase++,
         section: (r[1]||'Applied Values').trim(),
         pool: 'Applied',
-        type: 'Applied',
+        type: (r[3]||'Applied').trim(),
         q: (r[4]||'').trim(),
         opts: [(r[5]||'').trim(),(r[6]||'').trim(),(r[7]||'').trim(),(r[8]||'').trim()],
         correct: correctIndex((r[9]||'A').trim()),
         topic: (r[1]||'Applied Values').trim(),
-        expl: (r[10]||'').trim()
+        expl: (r[11]||'').trim()
       });
     }
     return qs;
