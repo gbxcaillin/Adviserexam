@@ -158,10 +158,9 @@
   .btn-prev-q { flex: 1; background: white; color: var(--text-primary); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 14px rgba(0,29,52,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
   .btn-prev-q:hover { border-color: var(--navy); background: #fde8df; }
   .btn-prev-q:active { transform: scale(0.97); }
-  .btn-next-q { flex: 1; background: #001D34; color: white; border: 1.5px solid #001D34; border-radius: var(--radius-md); padding: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); letter-spacing: 0.01em; }
-  .btn-next-q:hover { background: #0a2d4a; border-color:#0a2d4a; }
+  .btn-next-q { flex: 1; background: var(--navy); color: white; border: none; border-radius: var(--radius-md); padding: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--transition); letter-spacing: 0.01em; box-shadow: 0 4px 14px rgba(0,29,52,0.35), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .btn-next-q:hover { background: var(--navy-light); }
   .btn-next-q:active { transform: scale(0.97); }
-  .theme-dark .btn-next-q { background:#001D34; border-color:rgba(255,255,255,0.3); color:white; }
 
   /* Exam length picker */
   .exam-length-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
@@ -645,8 +644,14 @@
 <div class="phone-wrap">
 <div class="phone-frame">
 
-  <!-- NOTCH — empty so native device chrome shows through on real devices -->
-  <div class="notch"></div>
+  <!-- NOTCH -->
+  <div class="notch">
+    <div class="notch-time">9:41</div>
+    <div class="notch-icons">
+      <svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+      <svg width="22" height="12" viewBox="0 0 28 14" fill="white"><rect x="0" y="1" width="24" height="12" rx="2.5" fill="none" stroke="white" stroke-width="1.5"/><rect x="1.5" y="2.5" width="18" height="9" rx="1.5" fill="white"/><rect x="25" y="4.5" width="2.5" height="5" rx="1.25" fill="white"/></svg>
+    </div>
+  </div>
 
   <!-- TAB CONTENT -->
   <div class="tab-content">
@@ -1298,23 +1303,6 @@
             </div>
           </div>
 
-          <!-- SWITCH VERSION -->
-          <div class="settings-group">
-            <div class="settings-group-label">Switch version</div>
-            <div class="settings-row" style="border-bottom:none;cursor:pointer;" onclick="window.open('https://gbxcaillin.github.io/ExamPreparation/','_blank')">
-              <div class="settings-info">
-                <div class="settings-name">Open Desktop Version</div>
-                <div class="settings-desc">Full-screen layout with sidebar — best on a laptop or desktop.</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;color:var(--gold);">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                </svg>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-              </div>
-            </div>
-          </div>
-
           <!-- THEME -->
           <div class="settings-group">
             <div class="settings-group-label">Theme</div>
@@ -1587,7 +1575,7 @@
   // ── REPORT AN ISSUE ──────────────────────────────────────────────
   function reportAnIssue() {
     const SUPPORT_EMAIL = 'support@gbxps.com'; // Change this when ready
-    const APP_VERSION = 'v187';
+    const APP_VERSION = 'v188';
     const subject = '[FASEA Exam Trainer] Issue Report — ' + APP_VERSION;
 
     // Gather diagnostic info to pre-fill the email body
@@ -2723,7 +2711,6 @@
   // ══════════════════════════════════════════════════════════════════
   const PRACTICE_SESSION_SIZE = 20;
   let pPool = [];          // full shuffled pool
-  let pSkipped = [];       // indices of skipped questions to return to
   let pPoolOffset = 0;     // how many questions we've consumed from the pool
   let pSession = [];       // current 20-question session
   let pIdx = 0;
@@ -2734,7 +2721,6 @@
     pPool = getPoolForChipNames(chipNames);
     pPoolOffset = 0;
     pAnswered = {};
-    pSkipped = [];
     pSessionScore = { correct: 0, total: 0 };
     pSession = sliceSessionRespectingScenarios(pPool, 0, PRACTICE_SESSION_SIZE);
     pIdx = 0;
@@ -2860,12 +2846,10 @@
         '<button class="btn-next-q" onclick="pNav(1)">' + (lastQ ? 'See results →' : 'Next →') + '</button>' +
       '</div>';
 
-    const pendingSkips = pSkipped.filter(i => pAnswered[i] === undefined).length;
-    const skipLabel = pIsSkipped(pIdx) ? 'Skip again →' : (pendingSkips > 0 ? 'Skip (' + pendingSkips + ' pending) →' : 'Skip →');
     const skipRow = !isAns ?
       '<div class="q-btn-row" style="margin-top:12px;">' +
         '<button class="btn-prev-q" onclick="pNav(-1)" style="visibility:' + (pIdx > 0 ? 'visible' : 'hidden') + '">← Previous</button>' +
-        '<button class="btn-prev-q" style="box-shadow:0 4px 14px rgba(0,29,52,0.1),inset 0 1px 0 rgba(255,255,255,0.9);" onclick="pSkip()">' + skipLabel + '</button>' +
+        '<button class="btn-prev-q" style="box-shadow:0 4px 14px rgba(0,29,52,0.1),inset 0 1px 0 rgba(255,255,255,0.9);" onclick="pSkip()">Skip →</button>' +
       '</div>' : '';
 
     // Scenario narrative box (shown in question card for rich RS-type scenarios)
@@ -2941,24 +2925,10 @@
 
   function pSkip() {
     if (pAnswered[pIdx] !== undefined) return;
-    // Flag as skipped if not already in the list
-    if (!pSkipped.includes(pIdx)) pSkipped.push(pIdx);
-    // Find next unanswered, non-skipped question
-    let next = -1;
-    for (let j = pIdx + 1; j < pSession.length; j++) {
-      if (pAnswered[j] === undefined && !pSkipped.includes(j)) { next = j; break; }
-    }
-    if (next === -1) {
-      // All remaining are skipped — loop back to first skipped
-      if (pSkipped.length > 0) { pIdx = pSkipped[0]; renderPQ(); return; }
-    } else {
-      pIdx = next;
+    if (pIdx < pSession.length - 1) {
+      pIdx++;
     }
     renderPQ();
-  }
-
-  function pIsSkipped(idx) {
-    return pSkipped.includes(idx) && pAnswered[idx] === undefined;
   }
 
   function pNav(dir) {
@@ -3041,15 +3011,8 @@
     examCurrentQ = 0;
 
     const track = document.getElementById('exam-carousel-track');
-    // Track scenario groups to show "Continuing" header on Q2+
+    // Track last scenario key so we only show the context box on the first Q of each group
     let lastScenKey = null;
-    const scenGroupCount = {};  // scenKey -> total questions in group
-    const scenGroupPos = {};    // scenKey -> current position index (1-based)
-    // Pre-count group sizes
-    examQuestions.forEach(q => {
-      const k = q.scenario_key || q.scenarioContext || null;
-      if (k) scenGroupCount[k] = (scenGroupCount[k] || 0) + 1;
-    });
     track.innerHTML = examQuestions.map((q, i) => {
       const letters = ['A','B','C','D'];
       const opts = q.opts.map((opt, oi) =>
@@ -3057,51 +3020,12 @@
         '<div class="opt-l" style="border-radius:50%;">' + letters[oi] + '</div>' +
         '<div class="opt-t">' + escHtml(opt) + '</div></div>'
       ).join('');
-
+      // Show scenario context on every question in the group (they share the same scenario)
       const scenKey = q.scenario_key || q.scenarioContext || null;
       const scenText = q.scenario || q.scenarioContext || null;
-      const isFirstInGroup = scenKey !== lastScenKey;
-      lastScenKey = scenKey;
-
-      let scenarioHtml = '';
-      if (scenText && scenKey) {
-        if (isFirstInGroup) {
-          scenGroupPos[scenKey] = 1;
-        } else {
-          scenGroupPos[scenKey] = (scenGroupPos[scenKey] || 1) + 1;
-        }
-        const qPos = scenGroupPos[scenKey];
-        const qTotal = scenGroupCount[scenKey] || 1;
-
-        // Extract short scenario name (e.g. "S1 — Melissa Kumar" from "S1 – Melissa Kumar (Aspen...)")
-        const shortName = scenKey.replace(/\s*\(.*\)$/, '').replace('–', '—').trim();
-
-        if (isFirstInGroup) {
-          // First Q — full narrative with standard SCENARIO header
-          scenarioHtml =
-            '<div class="exam-scenario-box">' +
-              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
-                '<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Scenario</div>' +
-                '<div style="font-size:10px;color:rgba(255,255,255,0.45);">Q' + qPos + ' of ' + qTotal + ' in this scenario</div>' +
-              '</div>' +
-              '<div class="exam-scenario-text">' + escHtml(scenText) + '</div>' +
-            '</div>';
-        } else {
-          // Q2+ — "Continuing" header with full narrative still visible
-          scenarioHtml =
-            '<div style="background:var(--navy);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:12px;border-left:3px solid var(--gold);">' +
-              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
-                '<div style="display:flex;align-items:center;gap:6px;">' +
-                  '<div style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>' +
-                  '<div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);">Continuing · ' + escHtml(shortName) + '</div>' +
-                '</div>' +
-                '<div style="font-size:10px;color:rgba(255,255,255,0.45);">Q' + qPos + ' of ' + qTotal + '</div>' +
-              '</div>' +
-              '<div class="exam-scenario-text">' + escHtml(scenText) + '</div>' +
-            '</div>';
-        }
-      }
-
+      const scenarioHtml = scenText
+        ? '<div class="exam-scenario-box"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Scenario</div><div class="exam-scenario-text">' + escHtml(scenText) + '</div></div>'
+        : '';
       return '<div class="exam-slide" id="exam-slide-' + i + '">' +
         scenarioHtml +
         '<div class="q-tag" style="margin-top:' + (scenText ? '10px' : '0') + ';">' + escHtml(qDisplayTag(q)) + '</div>' +
@@ -3325,7 +3249,7 @@
     // Restore text size preference
 
   // ── GOOGLE SHEETS LIVE QUESTION FETCH ────────────────────────────────────
-  var APP_VERSION = 'v187';
+  var APP_VERSION = 'v188';
   const SHEET_ID = '11q3Fq35nPEKCXyVA8R3JJt8PJ72BL3pA';
   const PUB_KEY = '2PACX-1vSTsCvhrhFVnMPhrrOMLr852XdOquXen83Ne6KKSGyLxNP2MGRyHEflMiHfDUcTBg';
   const SHEET_TABS = {
@@ -3719,7 +3643,15 @@
   }
 
   // ── LIVE CLOCK ──────────────────────────────────────────────────
-  // Status bar left empty for native device chrome
+  function updateClock() {
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2,'0');
+    const m = now.getMinutes().toString().padStart(2,'0');
+    const el = document.querySelector('.notch-time');
+    if (el) el.textContent = h + ':' + m;
+  }
+  updateClock();
+  setInterval(updateClock, 10000);
 
   
 </script>
